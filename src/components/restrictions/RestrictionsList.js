@@ -1,8 +1,8 @@
 import { Jumbotron, Container, Card } from 'react-bootstrap'
-import RestrictionsData from '../data/restrictions.json'
+import RestrictionsData from '../../data/restrictions.json'
 import Restriction from './Restriction'
 
-function RestrictionList() {
+function RestrictionsList() {
     return (
         <Jumbotron fluid className="p-0">
             {
@@ -29,4 +29,4 @@ function RestrictionList() {
     );
 }
 
-export default RestrictionList;
+export default RestrictionsList;

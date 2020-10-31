@@ -1,12 +1,21 @@
 import TopBar from './components/TopBar'
-import RestrictionList from './components/RestrictionList'
+import RestrictionsList from './components/restrictions/RestrictionsList'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <TopBar />
-      <RestrictionList />
-    </div>
+      <Switch>
+        <Route path="/">
+          <RestrictionsList />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
