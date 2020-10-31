@@ -1,0 +1,28 @@
+[
+    {
+        "title": "Ograniczeniu w przemieszczaniu się",
+        "restrictions": [
+            {
+                "content": "Zachowanie 1,5 metra odległości między pieszymi"
+            },
+            {
+                "content": "Zasłanianie ust i nosa w miejscach publicznych"
+            },
+            {
+                "content": "Dzieci i młodzieży do 16 roku życia muszą przemieszczać się pod opieką rodzica lub opiekuna",
+                "details": [
+                    "obowiązuje od poniedziałku do piątku w godzinach 8:00-16:00",
+                    "niedotyczy kiedy dziecko idzie do szkoły lub wraca z niej do domu"
+                ]
+            },
+            {
+                "content": "Seniorzy (zwłaszcza osoby 70+) powinni ograniczyć przemieszczanie się do minimum",
+                "details": [
+                    "niedotyczy wykonywania czynności zawodowych",
+                    "niedotyczy zaspokajania niezbędnych potrzeb związanych z bieżącymi sprawami życia codziennego",
+                    "niedotyczy sprawowania lub uczestniczenia w sprawowaniu kultu religijnego, w tym czynności lub obrzędów religijnych"
+                ]
+            }
+        ]
+    }
+]
