@@ -36,6 +36,11 @@ jobs:
       - run: npm run build
 
       # Data scraping
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
       - name: Data scraping
         run: |
           cd ./scraping
