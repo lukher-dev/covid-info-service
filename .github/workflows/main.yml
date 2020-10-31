@@ -1,4 +1,4 @@
-name: CI
+name: Data scraping and deployment
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
@@ -35,7 +35,16 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Deploy 🚀
+      # Data scraping
+      - name: Data scraping
+        run: |
+          cd ./scraping
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python twitter.py > ../build/stats_data.json
+          
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
