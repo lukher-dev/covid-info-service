@@ -14,6 +14,7 @@ cases_global = None
 dead_global = None
 tests_done_today = None
 per_voivodeship = {}
+tweets = tweets[::-1]
 for tweet in tweets:
     text = tweet.text.strip()
     match = re.search(
