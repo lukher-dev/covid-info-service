@@ -2,6 +2,7 @@ import { Jumbotron, Container, Row, Col, Button } from 'react-bootstrap'
 import {
     Link
 } from "react-router-dom";
+import lastUpdateDate from '../data/lastUpdateDate.json'
 
 function RestrictionsList() {
     return (
@@ -10,7 +11,7 @@ function RestrictionsList() {
                 <Container fluid className="text-center" >
                     <Row>
                         <Col>
-                            <p className='m-0 font-weight-light'>Dane z dnia 01.11.2020</p>
+                            <p className='m-0 font-weight-light'>Dane z dnia {lastUpdateDate.lastCases}</p>
                             <hr className='m-2' />
                         </Col>
                     </Row>
@@ -83,7 +84,7 @@ function RestrictionsList() {
                 <Container>
                     <Row className="text-center">
                         <Col>
-                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: 22.10.2020</p>
+                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {lastUpdateDate.lastRestrictions}</p>
                         </Col>
                     </Row>
                     <Row className='m-0'>

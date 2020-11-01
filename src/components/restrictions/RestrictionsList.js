@@ -1,10 +1,10 @@
-import { Jumbotron, Card } from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 import RestrictionsData from '../../data/restrictions.json'
-import Restriction from './Restriction'
+import SingleRestriction from './SingleRestriction'
 
 function RestrictionsList() {
     return (
-        <Jumbotron fluid className="p-0">
+        <Container className="p-0">
             {
                 RestrictionsData.map(category => {
                     return (
@@ -15,7 +15,7 @@ function RestrictionsList() {
                             <Card.Body className="p-1">
                                 <ul className="pl-4">
                                     {category.restrictions.map(restriction => {
-                                        return <Restriction content={restriction.content} details={restriction.details} />
+                                        return <SingleRestriction content={restriction.content} details={restriction.details} />
                                     })}
                                 </ul>
                             </Card.Body>
@@ -23,7 +23,7 @@ function RestrictionsList() {
                     )
                 })
             }
-        </Jumbotron>
+        </Container>
     );
 }
 

@@ -1,4 +1,4 @@
-function Restriction(props) {
+function SingleRestriction(props) {
     return (
         <li>
             <p>{props.content}</p>
@@ -14,4 +14,4 @@ function Restriction(props) {
     );
 }
 
-export default Restriction;
+export default SingleRestriction;
