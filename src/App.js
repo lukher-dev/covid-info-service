@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import TopBar from './components/TopBar'
+import Restrictions from './components/restrictions/Restrictions'
+import Statistics from './components/statistics/Statistics'
+import Landing from './components/Landing'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <TopBar />
+      <Switch>
+        <Route path="/restrictions">
+          <Restrictions />
+        </Route>
+        <Route path="/statistics">
+          <Statistics />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
