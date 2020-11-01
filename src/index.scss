@@ -1,7 +1,12 @@
 
 $primary: #202020;
+$light: #f0f0f5;
 
 @import "bootstrap";
+
+.jumbotron{
+  background-color: $light;
+}
 
 body {
   margin: 0;

@@ -1,5 +1,6 @@
 import TopBar from './components/TopBar'
 import RestrictionsList from './components/restrictions/RestrictionsList'
+import Landing from './components/Landing'
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,8 +12,11 @@ function App() {
     <Router>
       <TopBar />
       <Switch>
-        <Route path="/">
+        <Route path="/restrictions">
           <RestrictionsList />
+        </Route>
+        <Route path="/">
+          <Landing />
         </Route>
       </Switch>
     </Router>
