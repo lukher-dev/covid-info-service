@@ -6,7 +6,6 @@ import lastUpdateDate from '../data/lastUpdateDate.json'
 import statsData from '../data/statsData.json'
 
 function RestrictionsList() {
-    console.log(statsData)
     return (
         <div>
             <Jumbotron fluid className='p-1 m-2' >
@@ -25,12 +24,12 @@ function RestrictionsList() {
                             <h6>Nowe zgony:</h6>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='mb-3'>
                         <Col>
-                            <h4 className='text-danger'>+30000</h4>
+                            <h4 className='text-danger'>+{statsData.new_cases_today}</h4>
                         </Col>
                         <Col>
-                            <h4 className='text-danger'>+1000</h4>
+                            <h4 className='text-danger'>+{parseInt(statsData.dead_covid_today) + parseInt(statsData.dead_intercurrent_today)}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -38,9 +37,9 @@ function RestrictionsList() {
                             <h6>Liczba wykonanych testów</h6>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='mb-3'>
                         <Col>
-                            <h4>80000</h4>
+                            <h4>{statsData.tests_done_today}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -48,15 +47,15 @@ function RestrictionsList() {
                             <h6>Aktywne przypadki</h6>
                         </Col>
                         <Col>
-                            <h6>Zgony</h6>
+                            <h6>Zgony Łącznie</h6>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row className='mb-3'>
                         <Col>
-                            <h4>200000</h4>
+                            <h4>-</h4>
                         </Col>
                         <Col>
-                            <h4>5000</h4>
+                            <h4>{statsData.dead_global}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -69,10 +68,10 @@ function RestrictionsList() {
                     </Row>
                     <Row>
                         <Col>
-                            <h4>1000/1500</h4>
+                            <h4>-</h4>
                         </Col>
                         <Col>
-                            <h4>1000/1500</h4>
+                            <h4>-</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -91,11 +90,11 @@ function RestrictionsList() {
                     </Row>
                     <Row className='m-0'>
                         <Col className='p-0 m-2'>
-                            <Link to="/restrictions"><Button className='w-100'>Obostrzenia</Button></Link>
+                            <Link to="/restrictions"><Button className='w-100'>Zobacz obostrzenia</Button></Link>
                         </Col>
-                        <Col className='p-0 m-2'>
+                        {/* <Col className='p-0 m-2'>
                             <Link to="/statistics"><Button className='w-100'>Statystyki</Button></Link>
-                        </Col>
+                        </Col> */}
                     </Row>
                 </Container>
             </Jumbotron>
