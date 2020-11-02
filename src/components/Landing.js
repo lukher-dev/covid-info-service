@@ -3,8 +3,10 @@ import {
     Link
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
+import statsData from '../data/statsData.json'
 
 function RestrictionsList() {
+    console.log(statsData)
     return (
         <div>
             <Jumbotron fluid className='p-1 m-2' >

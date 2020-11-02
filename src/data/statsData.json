@@ -1,0 +1,26 @@
+{
+    "cases_global": "395480",
+    "dead_covid_today": "7",
+    "dead_global": "5875",
+    "dead_intercurrent_today": "85",
+    "new_cases_today": "15578",
+    "per_voivodeship": {
+        "dolnoslaskie": "737",
+        "kujawsko-pomorskie": "1379",
+        "lodzkie": "1180",
+        "lubelskie": "1043",
+        "lubuskie": "295",
+        "malopolskie": "1746",
+        "mazowieckie": "2218",
+        "opolskie": "355",
+        "podkarpackie": "1049",
+        "podlaskie": "543",
+        "pomorskie": "967",
+        "slaskie": "1362",
+        "swietokrzyskie": "294",
+        "warminsko-mazurskie": "582",
+        "wielkopolskie": "1256",
+        "zachodniopomorskie": "572"
+    },
+    "tests_done_today": "65 tys."
+}
