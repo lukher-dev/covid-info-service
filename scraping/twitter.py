@@ -18,6 +18,13 @@ tweets = tweets[::-1]
 for tweet in tweets:
     text = tweet.text.strip()
     match = re.search(
+        'Dzienny raport o #koronawirus', text)
+    if match:
+        url = text[33:]
+        photo_page = requests.get('http://'+url)
+        photo_soup = BeautifulSoup(photo_page.content, 'html.parser')
+        images = soup.find_all('img')
+    match = re.search(
         'Z powodu COVID.19 zmar.o (\\d+) os.b, .+ innymi .+ (\\d+) os.b', text)
     if match:
         dead_covid_today = match.groups()[0].replace(" ", "")
