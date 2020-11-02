@@ -6,21 +6,77 @@
                 "content": "Zachowanie 1,5 metra odległości między pieszymi"
             },
             {
-                "content": "Zasłanianie ust i nosa w miejscach publicznych"
+                "content": "Zasłanianie ust i nosa w miejscach publicznych",
+                "details": [
+                    "nie dotyczy lasów, parków, plaży i rodzinnych ogródków działkowych"
+                ]
             },
             {
-                "content": "Dzieci i młodzieży do 16 roku życia muszą przemieszczać się pod opieką rodzica lub opiekuna",
+                "content": "Dzieci i młodzież do 16 roku życia muszą przemieszczać się pod opieką rodzica lub opiekuna",
                 "details": [
                     "obowiązuje od poniedziałku do piątku w godzinach 8:00-16:00",
-                    "niedotyczy kiedy dziecko idzie do szkoły lub wraca z niej do domu"
+                    "nie dotyczy kiedy dziecko idzie do szkoły lub wraca z niej do domu"
                 ]
             },
             {
                 "content": "Seniorzy (zwłaszcza osoby 70+) powinni ograniczyć przemieszczanie się do minimum",
                 "details": [
-                    "niedotyczy wykonywania czynności zawodowych",
-                    "niedotyczy zaspokajania niezbędnych potrzeb związanych z bieżącymi sprawami życia codziennego",
-                    "niedotyczy sprawowania lub uczestniczenia w sprawowaniu kultu religijnego, w tym czynności lub obrzędów religijnych"
+                    "nie dotyczy wykonywania czynności zawodowych",
+                    "nie dotyczy zaspokajania niezbędnych potrzeb związanych z bieżącymi sprawami życia codziennego",
+                    "nie dotyczy sprawowania lub uczestniczenia w sprawowaniu kultu religijnego, w tym czynności lub obrzędów religijnych"
+                ]
+            },
+            {
+                "content": "Ograniczenia liczby miejsc w komunikacji publicznej",
+                "details": [
+                    "50% liczby miejsc siedzących",
+                    "30% liczby wszystkich miejsc siedzących i stojących, przy jednoczesnym pozostawieniu w pojeździe co najmniej 50% miejsc siedzących niezajętych"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Edukacja",
+        "restrictions": [
+            {
+                "content": "Nauka zdalna",
+                "details": [
+                    "dla uczniów klas IV-VIII szkół podstawowych",
+                    "dla wszystkich klas szkół ponadpodstawowych",
+                    "dla centrów kształcenia zawodowego",
+                    "słuchaczy placówek kształcenia ustawicznego"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Gospodarka",
+        "restrictions": [
+            {
+                "content": "Limit klientów w sklepach, na targu i poczcie",
+                "details": [
+                    "do 100 m kw. - 5 osób na 1 kasę",
+                    "powyżej 100 m kw. - 1 osoba na 15 m kw."
+                ]
+            },
+            {
+                "content": "Godziny dla seniorów 10:00 - 12:00",
+                "details": [
+                    "tylko osoby powyżej 60. roku życia mogą przebywać w tych godzinach w sklepie, drogerii, aptece oraz na poczcie",
+                    "obowiązują od poniedziałku do piątku"
+                ]
+            },
+            {
+                "content": "Zakaz działalności stacjonarnej restauracji",
+                "details": [
+                    "możliwa jest jedynie obsługa na wynos oraz na dowóz"
+                ]
+            },
+            {
+                "content": "Zawieszona działalność basenów, aquaparków, siłowni i centrów fitness",
+                "details": [
+                    "nie dotyczy zajęć dla uczniów i studentów",
+                    "nie dotyczy hoteli (tylko dla gości powyżej jednej doby)"
                 ]
             }
         ]
