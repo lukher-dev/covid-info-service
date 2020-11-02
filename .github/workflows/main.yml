@@ -44,9 +44,11 @@ jobs:
 
       - name: Update lastUpdateDate.json
         run: |
-          pwd
+          sudo apt-get install jq
           cat ./src/data/lastUpdateDate.json
-          node -p "JSON.stringify({ ...require('./src/data/lastUpdateDate.json'), lastCases: (new Date().getDay() + 1) + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear() }, null, 2)" > ./src/data/lastUpdateDate.json
+          jq '.lastCases = $today' --arg today $(eval date +'%d.%m.%Y') src/data/lastUpdateDate.json > temp.json
+          cat temp.json > src/data/lastUpdateDate.json
+          rm temp.json
 
       - run: npm ci
       - run: npm run build
