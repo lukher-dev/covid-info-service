@@ -44,7 +44,7 @@ jobs:
 
       - name: Update lastUpdateDate.json
         run: |
-          node -p "JSON.stringify({...require('./src/data/lastUpdateDate.json'), lastCases: `${new Date().getDay()+1}.${new Date().getMonth()+1}.${new Date().getFullYear()}`}, null, 2)" > ./src/data/lastUpdateDate.json
+          node -p "JSON.stringify({ ...require('./src/data/lastUpdateDate.json'), lastCases: (new Date().getDay() + 1) + '.' + (new Date().getMonth() + 1) + '.' + new Date().getFullYear() }, null, 2)" > ./src/data/lastUpdateDate.json
 
       - run: npm ci
       - run: npm run build
