@@ -1,6 +1,20 @@
 {
     "today": {
-        "active_cases": null,
+        "bed_count": null,
+        "cases_global": null,
+        "dead_covid_today": null,
+        "dead_global": null,
+        "dead_intercurrent_today": null,
+        "healed_count": null,
+        "new_cases_today": null,
+        "occupied_bed_count": null,
+        "occupied_respirator_count": null,
+        "per_voivodeship": {},
+        "respirator_count": null,
+        "tests_done_today": null
+    },
+    "yesterday": {
+        "active_cases": "254858",
         "bed_count": "25902",
         "cases_global": "414844",
         "dead_all_today": "227",
@@ -8,9 +22,9 @@
         "dead_global": "6102",
         "dead_intercurrent_today": "196",
         "healed_count": "159986",
-        "new_cases_today": null,
+        "new_cases_today": "19364",
         "occupied_bed_count": "18160",
-        "occupied_respirator_count": null,
+        "occupied_respirator_count": "1550",
         "per_voivodeship": {
             "dolnoslaskie": "1964",
             "kujawsko-pomorskie": "551",
@@ -31,38 +45,5 @@
         },
         "respirator_count": "1979",
         "tests_done_today": "65,7 tys."
-    },
-    "yesterday": {
-        "active_cases": "241067",
-        "bed_count": "24807",
-        "cases_global": "395480",
-        "dead_all_today": "92",
-        "dead_covid_today": "7",
-        "dead_global": "5875",
-        "dead_intercurrent_today": "85",
-        "healed_count": "154413",
-        "new_cases_today": "15578",
-        "occupied_bed_count": "17223",
-        "occupied_respirator_count": "1453",
-        "per_voivodeship": {
-            "dolnoslaskie": "737",
-            "kujawsko-pomorskie": "1379",
-            "lodzkie": "1180",
-            "lubelskie": "1043",
-            "lubuskie": "295",
-            "malopolskie": "1746",
-            "mazowieckie": "2218",
-            "opolskie": "355",
-            "podkarpackie": "1049",
-            "podlaskie": "543",
-            "pomorskie": "967",
-            "slaskie": "1362",
-            "swietokrzyskie": "294",
-            "warminsko-mazurskie": "582",
-            "wielkopolskie": "1256",
-            "zachodniopomorskie": "572"
-        },
-        "respirator_count": "1916",
-        "tests_done_today": "65 tys."
     }
 }
