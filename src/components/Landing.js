@@ -9,7 +9,7 @@ function RestrictionsList() {
     return (
         <div>
             <Jumbotron fluid className='p-1 m-2' >
-                <Container fluid className="text-center" >
+                <Container className="text-center" >
                     <Row>
                         <Col>
                             <p className='m-0 font-weight-light'>Dane z dnia {lastUpdateDate.lastCases}</p>
@@ -52,7 +52,7 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4>-</h4>
+                            <h4>{statsData.cases_global - statsData.healed_count}</h4>
                         </Col>
                         <Col>
                             <h4>{statsData.dead_global}</h4>
@@ -68,10 +68,10 @@ function RestrictionsList() {
                     </Row>
                     <Row>
                         <Col>
-                            <h4>-</h4>
+                            <h4>{statsData.occupied_respirator_count}/{statsData.respirator_count}</h4>
                         </Col>
                         <Col>
-                            <h4>-</h4>
+                            <h4>{statsData.occupied_bed_count}/{statsData.bed_count}</h4>
                         </Col>
                     </Row>
                     <Row>
