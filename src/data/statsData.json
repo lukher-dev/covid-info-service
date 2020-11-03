@@ -1,7 +1,9 @@
 {
     "today": {
+        "active_cases": "254858",
         "bed_count": "25902",
         "cases_global": "414844",
+        "dead_all_today": "227",
         "dead_covid_today": "31",
         "dead_global": "6102",
         "dead_intercurrent_today": "196",
@@ -31,8 +33,10 @@
         "tests_done_today": "65,7 tys."
     },
     "yesterday": {
+        "active_cases": "241067",
         "bed_count": "24807",
         "cases_global": "395480",
+        "dead_all_today": "92",
         "dead_covid_today": "7",
         "dead_global": "5875",
         "dead_intercurrent_today": "85",

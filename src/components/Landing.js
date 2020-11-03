@@ -26,27 +26,28 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4 className='text-danger m-0'>+{newOrOld('new_cases_today')}</h4>
+                            <h4 className='text-danger m-0'>{newOrOld('new_cases_today')}</h4>
                             {percentageDifference('new_cases_today')}
                         </Col>
                         <Col>
-                            <h4 className='text-danger m-0'>+{newOrOld('dead_all_today')}</h4>
+                            <h4 className='text-danger m-0'>{newOrOld('dead_all_today')}</h4>
                             {percentageDifference('dead_all_today')}
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <h6>Liczba wykonanych testów</h6>
+                            <h6>Aktywne przypadki</h6>
                         </Col>
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4>{newOrOld('tests_done_today')}</h4>
+                            <h4 className='m-0'>{newOrOld('active_cases')}</h4>
+                            {percentageDifference('active_cases')}
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <h6>Aktywne przypadki</h6>
+                            <h6>Liczba testów</h6>
                         </Col>
                         <Col>
                             <h6>Zgony Łącznie</h6>
@@ -54,7 +55,7 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4>{newOrOld('active_cases')}</h4>
+                            <h4>{newOrOld('tests_done_today')}</h4>
                         </Col>
                         <Col>
                             <h4>{newOrOld('dead_global')}</h4>
@@ -70,10 +71,10 @@ function RestrictionsList() {
                     </Row>
                     <Row>
                         <Col>
-                            <h4>{newOrOld('occupied_respirator_count')}/{newOrOld('respirator_count')}</h4>
+                            <h5>{newOrOld('occupied_respirator_count')}/{newOrOld('respirator_count')}</h5>
                         </Col>
                         <Col>
-                            <h4>{newOrOld('occupied_bed_count')}/{newOrOld('bed_count')}</h4>
+                            <h5>{newOrOld('occupied_bed_count')}/{newOrOld('bed_count')}</h5>
                         </Col>
                     </Row>
                     <Row>
@@ -87,7 +88,7 @@ function RestrictionsList() {
                 <Container>
                     <Row className="text-center">
                         <Col>
-                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {newOrOld('lastRestrictions')}</p>
+                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {lastUpdateDate.lastRestrictions}</p>
                         </Col>
                     </Row>
                     <Row className='m-0'>
