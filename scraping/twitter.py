@@ -5,11 +5,13 @@ import tweepy
 import json
 import re
 from datetime import datetime
+import sys
 
-consumer_key = ""
-consumer_secret = ""
-access_key = ""
-access_secret = ""
+consumer_key = sys.argv[1]
+consumer_secret = sys.argv[2]
+access_key = sys.argv[3]
+access_secret = sys.argv[4]
+
 
 today = {
         'dead_covid_today': None,
