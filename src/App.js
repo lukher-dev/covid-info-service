@@ -1,3 +1,4 @@
+import ReactGA from 'react-ga';
 import TopBar from './components/TopBar'
 import Restrictions from './components/restrictions/Restrictions'
 import Statistics from './components/statistics/Statistics'
@@ -9,6 +10,11 @@ import {
 } from "react-router-dom";
 
 function App() {
+  ReactGA.initialize('G-XKCGLLTPXT');
+  history.listen((location) => {
+    ReactGA.set({ page: location.pathname });
+    ReactGA.pageview(location.pathname);
+  })
   return (
     <Router>
       <TopBar />
