@@ -140,10 +140,15 @@ def get_all_tweets(screen_name):
 if __name__ == '__main__':
         get_all_tweets("MZ_GOV_PL")
 
-        data['today']['active_cases'] = str(int(data['today']['cases_global']) - int(data['today']['healed_count']))
+        try:
+                data['today']['active_cases'] = str(int(data['today']['cases_global']) - int(data['today']['healed_count']))
+        except:
+                pass
         data['yesterday']['active_cases'] = str(int(data['yesterday']['cases_global']) - int(data['yesterday']['healed_count']))
-
-        data['today']['dead_all_today'] = str(int(data['today']['dead_intercurrent_today']) + int(data['today']['dead_covid_today']))
+        try:
+                data['today']['dead_all_today'] = str(int(data['today']['dead_intercurrent_today']) + int(data['today']['dead_covid_today']))
+        except:
+                pass
         data['yesterday']['dead_all_today'] = str(int(data['yesterday']['dead_intercurrent_today']) + int(data['yesterday']['dead_covid_today']))
 
         print(json.dumps(data, sort_keys=True, indent=4))

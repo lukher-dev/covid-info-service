@@ -1,6 +1,6 @@
 {
     "today": {
-        "active_cases": "254858",
+        "active_cases": null,
         "bed_count": "25902",
         "cases_global": "414844",
         "dead_all_today": "227",
@@ -8,9 +8,9 @@
         "dead_global": "6102",
         "dead_intercurrent_today": "196",
         "healed_count": "159986",
-        "new_cases_today": "19364",
+        "new_cases_today": null,
         "occupied_bed_count": "18160",
-        "occupied_respirator_count": "1550",
+        "occupied_respirator_count": null,
         "per_voivodeship": {
             "dolnoslaskie": "1964",
             "kujawsko-pomorskie": "551",
