@@ -56,7 +56,7 @@ def extract_info_from_tweet(tweet):
         except:
                 pass
 
-        text = tweet.text
+        text = tweet.full_text
 
         match = re.search(
                 'Z powodu COVID.19 zmar.o (\\d+) os.b, .+ innymi .+ (\\d+) os.b', text)
@@ -99,7 +99,7 @@ def get_all_tweets(screen_name):
         api = tweepy.API(auth)
 
 
-        alltweets = api.user_timeline(screen_name = screen_name,count=30, include_ext_alt_text  = True)
+        alltweets = api.user_timeline(screen_name = screen_name,count=30, include_ext_alt_text  = True, tweet_mode='extended')
 
         alltweets = alltweets[::-1]
 
