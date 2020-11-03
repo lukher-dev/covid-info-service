@@ -3,13 +3,13 @@ import {
     Link
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
-import statsData from '../data/statsData.json'
+import { newOrOld, percentageDifference } from './helpers'
 
 function RestrictionsList() {
     return (
         <div>
             <Jumbotron fluid className='p-1 m-2' >
-                <Container className="text-center" >
+                <Container fluid className="text-center" >
                     <Row>
                         <Col>
                             <p className='m-0 font-weight-light'>Dane z dnia {lastUpdateDate.lastCases}</p>
@@ -26,10 +26,12 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4 className='text-danger'>+{statsData.new_cases_today}</h4>
+                            <h4 className='text-danger m-0'>+{newOrOld('new_cases_today')}</h4>
+                            {percentageDifference('new_cases_today')}
                         </Col>
                         <Col>
-                            <h4 className='text-danger'>+{parseInt(statsData.dead_covid_today) + parseInt(statsData.dead_intercurrent_today)}</h4>
+                            <h4 className='text-danger m-0'>+{newOrOld('dead_all_today')}</h4>
+                            {percentageDifference('dead_all_today')}
                         </Col>
                     </Row>
                     <Row>
@@ -39,7 +41,7 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4>{statsData.tests_done_today}</h4>
+                            <h4>{newOrOld('tests_done_today')}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -52,10 +54,10 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4>{statsData.cases_global - statsData.healed_count}</h4>
+                            <h4>{newOrOld('active_cases')}</h4>
                         </Col>
                         <Col>
-                            <h4>{statsData.dead_global}</h4>
+                            <h4>{newOrOld('dead_global')}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -68,10 +70,10 @@ function RestrictionsList() {
                     </Row>
                     <Row>
                         <Col>
-                            <h4>{statsData.occupied_respirator_count}/{statsData.respirator_count}</h4>
+                            <h4>{newOrOld('occupied_respirator_count')}/{newOrOld('respirator_count')}</h4>
                         </Col>
                         <Col>
-                            <h4>{statsData.occupied_bed_count}/{statsData.bed_count}</h4>
+                            <h4>{newOrOld('occupied_bed_count')}/{newOrOld('bed_count')}</h4>
                         </Col>
                     </Row>
                     <Row>
@@ -85,7 +87,7 @@ function RestrictionsList() {
                 <Container>
                     <Row className="text-center">
                         <Col>
-                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {lastUpdateDate.lastRestrictions}</p>
+                            <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {newOrOld('lastRestrictions')}</p>
                         </Col>
                     </Row>
                     <Row className='m-0'>
@@ -98,7 +100,7 @@ function RestrictionsList() {
                     </Row>
                 </Container>
             </Jumbotron>
-        </div>
+        </div >
     );
 }
 
