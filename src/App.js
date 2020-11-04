@@ -2,17 +2,14 @@ import TopBar from './components/TopBar'
 import Restrictions from './components/restrictions/Restrictions'
 import Landing from './components/Landing'
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
 } from "react-router-dom";
 
-console.log(process.env)
-// console.log(process.env.SITE_URL)
-
 function App() {
   return (
-    <Router>
+    <HashRouter basename="/">
       <TopBar />
       <Switch>
         <Route path={process.env.PUBLIC_URL + '/restrictions'}>
@@ -25,7 +22,7 @@ function App() {
           <Landing />
         </Route>
       </Switch>
-    </Router>
+    </HashRouter>
   );
 }
 
