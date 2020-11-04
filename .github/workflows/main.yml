@@ -50,7 +50,7 @@ jobs:
           rm temp.json
 
       - run: npm ci
-      - run: npm run build
+      - run: npm run deploy
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
