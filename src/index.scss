@@ -27,27 +27,28 @@ $light: #f0f0f5;
 }
 
 .color-green{
-  color: $primary;
   background-color: $success;
 }
 
 .color-yellow{
-  color: $primary;
   background-color: $warning;
 }
 
 .color-red{
-  color: $primary;
   background-color: $danger;
 }
 
 .color-purple{
-  color: $primary;
   background-color: purple;
 }
 
 .color-black{
   background-color: black;
+}
+
+.doom-bar .progress-bar{
+  z-index: 1;
+
 }
 
 .doom-bar{
