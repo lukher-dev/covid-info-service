@@ -55,15 +55,15 @@ $light: #f0f0f5;
 }
 
 .color-light-green{
-  background-color: rgba(0, 128, 0, 0.3);
+  background-color: #28a74680;
 }
 
 .color-light-yellow{
-  background-color: rgba(255, 255, 0, 0.3);
+  background-color: #ffc10780;
 }
 
 .color-light-red{
-  background-color: rgba(255, 0, 0, 0.3);
+  background-color: #dc354680;
 }
 
 .color-light-purple{
@@ -75,6 +75,7 @@ $light: #f0f0f5;
 }
 
 .doom-light-bar{
+  background-color: white;
   margin-top: -50px;
   height: 50px;
 }
