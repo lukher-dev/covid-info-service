@@ -4,7 +4,7 @@ import {
     Link
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
-import { newOrOld, percentageDifference, updateWarning, doomCounterValue } from './helpers'
+import { newOrOld, percentageDifference, updateWarning, doomCounterValue, insertThinSpace } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
 
@@ -27,19 +27,19 @@ function Landing() {
                     <Row>
                         <Col sm='4' xs={{ span: 6 }} className='mb-3'>
                             <h6>Nowe zakażenia:</h6>
-                            <h4 className='m-0'>{newOrOld('new_cases_today')}</h4>
+                            <h4 className='m-0'>{insertThinSpace(newOrOld('new_cases_today'))}</h4>
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
                         <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
                             <h6>Aktywne przypadki:</h6>
-                            <h4 className='m-0'>{newOrOld('active_cases')}</h4>
+                            <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
                             {updateWarning('active_cases')}
                             {percentageDifference('active_cases')}
                         </Col>
                         <Col sm={{ span: 4, order: 'last' }} xs={{ span: 6 }} className='mb-3'>
                             <h6>Nowe zgony:</h6>
-                            <h4 className='m-0'>{newOrOld('dead_all_today')}</h4>
+                            <h4 className='m-0'>{insertThinSpace(newOrOld('dead_all_today'))}</h4>
                             {updateWarning('dead_all_today')}
                             {percentageDifference('dead_all_today')}
                         </Col>
@@ -58,7 +58,7 @@ function Landing() {
                         </Col>
                         <Col lg={{ span: 3, order: 2 }} md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }}>
                             <h6>Zajęte respiratory:</h6>
-                            <h5>{newOrOld('occupied_respirator_count')}/{newOrOld('respirator_count')}</h5>
+                            <h5>{insertThinSpace(newOrOld('occupied_respirator_count'))}/{insertThinSpace(newOrOld('respirator_count'))}</h5>
                             <ProgressBar variant="danger" animated
                                 now={newOrOld('occupied_respirator_count') / newOrOld('respirator_count') * 100}
                                 label={String(Math.floor(newOrOld('occupied_respirator_count') / newOrOld('respirator_count') * 100)) + '%'} />
@@ -66,7 +66,7 @@ function Landing() {
                         </Col>
                         <Col lg={{ span: 3, order: 3 }} md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }}>
                             <h6>Zajęte łóżka:</h6>
-                            <h5>{newOrOld('occupied_bed_count')}/{newOrOld('bed_count')}</h5>
+                            <h5>{insertThinSpace(newOrOld('occupied_bed_count'))}/{insertThinSpace(newOrOld('bed_count'))}</h5>
                             <ProgressBar variant="danger" animated
                                 now={newOrOld('occupied_bed_count') / newOrOld('bed_count') * 100}
                                 label={String(Math.floor(newOrOld('occupied_bed_count') / newOrOld('bed_count') * 100)) + '%'} />
@@ -74,7 +74,7 @@ function Landing() {
                         </Col>
                         <Col lg={{ span: 3, order: 4 }} md={{ span: 6, order: 2 }} xs={{ span: 6, order: 2 }}>
                             <h6>Zgony Łącznie:</h6>
-                            <h4>{newOrOld('dead_global')}</h4>
+                            <h4>{insertThinSpace(newOrOld('dead_global'))}</h4>
                             {updateWarning('dead_global')}
                             <br />
                         </Col>

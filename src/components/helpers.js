@@ -96,3 +96,7 @@ export function doomCounterValue() {
 
     return [doomCounterValues, doomCounterActualValues, avg]
 }
+
+export function insertThinSpace(number) {
+    return number.replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009");
+}
