@@ -50,14 +50,7 @@ jobs:
           rm temp.json
 
       - run: npm ci
-      # Setup credentials for gh-pages build
-      - run: |
-          git config --global user.email "luker.plus@gmail.com"
-          git config --global user.name "TheCommonCold"
-      - uses: fusion-engineering/setup-git-credentials@v2
-        with:
-          credentials: ${{secrets.GIT_CREDENTIALS}}
-      - run: npm run deploy
+      - run: npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
