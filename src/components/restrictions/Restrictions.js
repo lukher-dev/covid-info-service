@@ -1,12 +1,17 @@
-import ReactGa from 'react-ga';
+import ReactGA from 'react-ga';
 import RestrictionsList from './RestrictionsList'
 import { Jumbotron, Row, Col, Alert, Container } from 'react-bootstrap'
 import { FaTwitterSquare } from 'react-icons/fa';
 import RestrictionsData from '../../data/restrictions.json'
 import UpcomingRestrictionsData from '../../data/upcomingRestrictions.json'
+import { useEffect } from 'react';
 
 function Restrictions() {
-    ReactGa.pageview(window.location.pathname);
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        console.log(window.location.pathname + window.location.search);
+    });
+
     return (
         <div>
             <Jumbotron fluid className="m-0 pt-0">

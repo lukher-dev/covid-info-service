@@ -1,4 +1,4 @@
-import ReactGa from 'react-ga';
+import ReactGA from 'react-ga';
 import { Jumbotron, Container, Row, Col, Button, ProgressBar } from 'react-bootstrap'
 import {
     Link
@@ -6,11 +6,14 @@ import {
 import lastUpdateDate from '../data/lastUpdateDate.json'
 import { newOrOld, percentageDifference, updateWarning, doomCounterValue } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
+import { useEffect } from 'react';
 
 function Landing() {
-    ReactGa.pageview(window.location.pathname);
     const [doomCounterValues, doomCounterActualValues, average] = doomCounterValue()
-    console.log(doomCounterValues)
+    useEffect(() => {
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        console.log(window.location.pathname + window.location.search);
+    });
     return (
         <div>
             <Jumbotron className='p-0 m-2' >

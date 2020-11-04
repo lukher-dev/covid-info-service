@@ -1,7 +1,5 @@
-import ReactGA from 'react-ga';
 import TopBar from './components/TopBar'
 import Restrictions from './components/restrictions/Restrictions'
-import Statistics from './components/statistics/Statistics'
 import Landing from './components/Landing'
 import {
   BrowserRouter as Router,
@@ -9,20 +7,21 @@ import {
   Route
 } from "react-router-dom";
 
-ReactGA.initialize('G-5J0BQEKJX3');
+console.log(process.env)
+// console.log(process.env.SITE_URL)
 
 function App() {
   return (
     <Router>
       <TopBar />
       <Switch>
-        <Route path="/restrictions">
+        <Route path={process.env.PUBLIC_URL + '/restrictions'}>
           <Restrictions />
         </Route>
-        <Route path="/statistics">
-          <Statistics />
+        <Route path={process.env.PUBLIC_URL + '/statistics'}>
+          <Landing />
         </Route>
-        <Route path="/">
+        <Route path={process.env.PUBLIC_URL + '/'}>
           <Landing />
         </Route>
       </Switch>
