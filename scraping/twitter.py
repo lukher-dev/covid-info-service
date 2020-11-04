@@ -41,9 +41,12 @@ yesterday = {
         'healed_count': None,
         'per_voivodeship': {}}
 
+cases_history = []
+
 data = {
         'today': today,
-        'yesterday': yesterday
+        'yesterday': yesterday,
+        'casesHistory': cases_history
 }
 
 
@@ -60,67 +63,72 @@ def extract_info_from_tweet(tweet):
 
                 match = re.search(
                         'liczba ł..ek dla pacjent.w z COVID-19: ([ \\d]+)', text)
-                if match:
+                if match and not curent_data['bed_count']:
                         curent_data['bed_count'] = match.groups()[0].replace(" ", "")
 
                 match = re.search(
                         'liczba ...ek zaj.tych: ([ \\d]+)', text)
-                if match:
+                if match and not curent_data['occupied_bed_count']:
                         curent_data['occupied_bed_count'] = match.groups()[0].replace(" ", "")
 
                 match = re.search(
                         'liczba respirator.w dla pacjent.w z COVID-19: ([ \\d]+)', text)
-                if match:
+                if match and not curent_data['respirator_count']:
                         curent_data['respirator_count'] = match.groups()[0].replace(" ", "")
 
                 match = re.search(
                         'liczba zaj.tych respirator.w: ([ \\d]+)', text)
-                if match:
+                if match and not curent_data['occupied_respirator_count']:
                         curent_data['occupied_respirator_count'] = match.groups()[0].replace(" ", "")
 
                 match = re.search(
                         'liczba os.b, kt.re wyzdrowia.y: ([ \\d]+)', text)
-                if match:
+                if match and not curent_data['healed_count']:
                         curent_data['healed_count'] = match.groups()[0].replace(" ", "")
         except:
                 pass
 
-        text = tweet.full_text
+        try:
+                text = tweet.full_text
 
-        match = re.search(
-                'Z powodu COVID.19 zmar.o (\\d+) os.b, .+ innymi .+ (\\d+) os.b', text)
-        if match:
-                curent_data['dead_covid_today'] = match.groups()[0].replace(" ", "")
-                curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "")
+                match = re.search(
+                        'Z powodu COVID.19 zmar.o (\\d+) os.b, .+ innymi .+ (\\d+) os.b', text)
+                if match and (not curent_data['dead_covid_today'] and not curent_data['dead_intercurrent_today']):
+                        curent_data['dead_covid_today'] = match.groups()[0].replace(" ", "")
+                        curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "")
 
-        match = re.search(
-                'Mamy ([ \\d]+) now', text)
-        if match:
-                curent_data['new_cases_today'] = match.groups()[0].replace(" ", "")
+                match = re.search(
+                        'Mamy ([ \\d]+) now', text)
+                if match:
+                        if not curent_data['new_cases_today']:
+                                curent_data['new_cases_today'] = match.groups()[0].replace(" ", "")
+                        cases_history.append(match.groups()[0].replace(" ", ""))
 
-        match = re.search(
-                '.iczba zaka.onych koronawirusem.([ \\d]+).([ \\d]+).wszystkie', text)
-        if match:
-                curent_data['cases_global'] = match.groups()[
-                        0].replace(" ", "")
-                curent_data['dead_global'] = match.groups()[1].replace(" ", "")
+                match = re.search(
+                        '.iczba zaka.onych koronawirusem.([ \\d]+).([ \\d]+).wszystkie', text)
+                if match and (not curent_data['cases_global'] and not curent_data['dead_global']):
+                        curent_data['cases_global'] = match.groups()[
+                                0].replace(" ", "")
+                        curent_data['dead_global'] = match.groups()[1].replace(" ", "")
 
-        match = re.search(
-                'ci.gu doby wykonano ponad (.+) test.w', text)
-        if match:
-                curent_data['tests_done_today'] = match.groups()[0]
+                match = re.search(
+                        'ci.gu doby wykonano ponad (.+) test.w', text)
+                if match and not curent_data['tests_done_today']:
+                        curent_data['tests_done_today'] = match.groups()[0]
 
-        match = re.findall(
-                '(\\S+ie)go .([ \\d]+).', text)
-        if match:
-                for m in match:
-                        woj = m[0].replace("ą", "a").replace("ś", "s").replace("ń", "n").replace("ł",
-                                                                                                 "l").replace(
-                                "ó",
-                                "o").replace(
-                                "ę",
-                                "e")
-                        curent_data['per_voivodeship'][woj] = m[1].replace(" ", "")
+                # match = re.findall(
+                #         '(\\S+ie)go .([ \\d]+).', text)
+                # if match:
+                #         for m in match:
+                #                 woj = m[0].replace("ą", "a").replace("ś", "s").replace("ń", "n").replace("ł",
+                #                                                                                          "l").replace(
+                #                         "ó",
+                #                         "o").replace(
+                #                         "ę",
+                #                         "e")
+                #                 curent_data['per_voivodeship'][woj] = m[1].replace(" ", "")
+        except:
+                pass
 
 def get_all_tweets(screen_name):
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -128,26 +136,21 @@ def get_all_tweets(screen_name):
         api = tweepy.API(auth)
 
 
-        alltweets = api.user_timeline(screen_name = screen_name,count=100, include_ext_alt_text  = True, tweet_mode='extended')
+        alltweets = api.user_timeline(screen_name = screen_name,count=200, include_ext_alt_text  = True, tweet_mode='extended')
+        oldest = alltweets[-1].id - 1
 
-        alltweets = alltweets[::-1]
+        while len(cases_history)<7:
+                for tweet in alltweets:
+                        extract_info_from_tweet(tweet)
 
-        for tweet in alltweets:
-                extract_info_from_tweet(tweet)
+                alltweets = api.user_timeline(screen_name=screen_name, count=200, include_ext_alt_text  = True, tweet_mode='extended', min_id=oldest)
+                oldest = alltweets[-1].id - 1
 
 
 
 if __name__ == '__main__':
         get_all_tweets("MZ_GOV_PL")
 
-        try:
-                data['today']['active_cases'] = str(int(data['today']['cases_global']) - int(data['today']['healed_count']))
-        except:
-                pass
-        try:
-                data['yesterday']['active_cases'] = str(int(data['yesterday']['cases_global']) - int(data['yesterday']['healed_count']))
-        except:
-                pass
         try:
                 data['today']['dead_all_today'] = str(int(data['today']['dead_intercurrent_today']) + int(data['today']['dead_covid_today']))
         except:
@@ -156,4 +159,13 @@ if __name__ == '__main__':
                 data['yesterday']['dead_all_today'] = str(int(data['yesterday']['dead_intercurrent_today']) + int(data['yesterday']['dead_covid_today']))
         except:
                 pass
+        try:
+                data['today']['active_cases'] = str(int(data['today']['cases_global']) - int(data['today']['healed_count']) - int(data['today']['dead_global']))
+        except:
+                pass
+        try:
+                data['yesterday']['active_cases'] = str(int(data['yesterday']['cases_global']) - int(data['yesterday']['healed_count']) - int(data['yesterday']['dead_global']))
+        except:
+                pass
+
         print(json.dumps(data, sort_keys=True, indent=4))
