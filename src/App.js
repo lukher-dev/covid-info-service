@@ -13,13 +13,13 @@ function App() {
     <Router>
       <TopBar />
       <Switch>
-        <Route path="/restrictions">
+        <Route path={process.env.PUBLIC_URL + '/restrictions'}>
           <Restrictions />
         </Route>
-        <Route path="/statistics">
+        <Route path={process.env.PUBLIC_URL + '/statistics'}>
           <Landing />
         </Route>
-        <Route path="/">
+        <Route path={process.env.PUBLIC_URL + '/'}>
           <Landing />
         </Route>
       </Switch>
