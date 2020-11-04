@@ -5,6 +5,11 @@ $light: #f0f0f5;
 @import "bootstrap";
 
 .jumbotron{
+  background-color: white;
+}
+
+.container{
+  border-radius: 0.3rem;
   background-color: $light;
 }
 
@@ -14,6 +19,11 @@ $light: #f0f0f5;
 
 .progress{
   background-color: lightblue;
+}
+
+.restrictions-button{
+  margin: auto;
+  max-width: 400px;
 }
 
 body {
