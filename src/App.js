@@ -10,6 +10,9 @@ import {
 } from "react-router-dom";
 
 ReactGA.initialize('G-5J0BQEKJX3');
+ReactGA.set({
+  appVersion: window.navigator.platform
+});
 
 function App() {
   return (
