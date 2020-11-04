@@ -28,17 +28,17 @@ $light: #f0f0f5;
 
 .color-green{
   color: $primary;
-  background-color: green;
+  background-color: $success;
 }
 
 .color-yellow{
   color: $primary;
-  background-color: yellow;
+  background-color: $warning;
 }
 
 .color-red{
   color: $primary;
-  background-color: red;
+  background-color: $danger;
 }
 
 .color-purple{

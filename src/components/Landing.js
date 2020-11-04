@@ -127,7 +127,7 @@ function Landing() {
                     </Row>
                     <Row className='m-0'>
                         <Col className='p-0 m-2'>
-                            <Link to="/restrictions"><Button className='restrictions-button' block>Zobacz obostrzenia</Button></Link>
+                            <Button className='restrictions-button' block><Link to="/restrictions"><p className='m-0 text-white'>Zobacz obostrzenia</p></Link></Button>
                         </Col>
                         {/* <Col className='p-0 m-2'>
                             <Link to="/statistics"><Button className='w-100'>Statystyki</Button></Link>
