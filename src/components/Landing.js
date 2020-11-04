@@ -96,7 +96,7 @@ function Landing() {
                     <Row>
                         <Col>
                             <h6>Etapy zasad bezpieczeństwa</h6>
-                            <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7dni na 100 tyś. mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
+                            <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
                             <ProgressBar className='doom-bar'>
                                 <ProgressBar className="color-green" now={doomCounterValues[0]} label={Math.floor(doomCounterActualValues[0]).toString() + '/10'} />
                                 <ProgressBar className="color-yellow" now={doomCounterValues[1]} label={Math.floor(doomCounterActualValues[1]).toString() + '/25'} />
