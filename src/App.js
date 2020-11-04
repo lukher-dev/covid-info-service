@@ -9,7 +9,7 @@ import {
   Route
 } from "react-router-dom";
 
-ReactGA.initialize('G-XKCGLLTPXT');
+ReactGA.initialize('G-5J0BQEKJX3');
 
 function App() {
   return (
