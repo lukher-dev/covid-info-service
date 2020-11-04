@@ -52,6 +52,7 @@ jobs:
       - run: npm ci
       # Setup credentials for gh-pages build
       - run: |
+          git config --global credential.helper wincred
           git config --global user.email "sebastian_maciejewski@yahoo.com"
           git config --global user.name "S-Maciejewski"
       - run: npm run deploy
