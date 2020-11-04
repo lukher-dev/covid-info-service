@@ -51,6 +51,9 @@ jobs:
 
       - run: npm ci
       # Setup credentials for gh-pages build
+      - run: |
+          git config --global user.email "luker.plus@gmail.com"
+          git config --global user.name "TheCommonCold"
       - uses: fusion-engineering/setup-git-credentials@v2
         with:
           credentials: ${{secrets.GIT_CREDENTIALS}}
