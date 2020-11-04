@@ -1,3 +1,4 @@
+import ReactGa from 'react-ga';
 import { Jumbotron, Container, Row, Col, Button, ProgressBar } from 'react-bootstrap'
 import {
     Link
@@ -7,6 +8,7 @@ import { newOrOld, percentageDifference, updateWarning } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 
 function RestrictionsList() {
+    ReactGa.pageview(window.location.pathname);
     return (
         <div>
             <Jumbotron fluid className='p-1 m-2' >
