@@ -6,7 +6,7 @@ export function newOrOld(field) {
 
 export function updateWarning(field) {
     if (!statsData['today'][field]) {
-        return <p className='adnotation text-danger m-0'>(wartość wczorajsza)</p>
+        return <p className='adnotation text-danger m-0'>(Wczorajsza wartość)</p>
     }
 }
 

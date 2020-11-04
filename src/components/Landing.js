@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
 import { newOrOld, percentageDifference, updateWarning } from './helpers'
+import { FaTwitterSquare } from 'react-icons/fa';
 
 function RestrictionsList() {
     return (
@@ -12,7 +13,7 @@ function RestrictionsList() {
                 <Container fluid className="text-center" >
                     <Row>
                         <Col>
-                            <p className='m-0 font-weight-light'>Dane z dnia {lastUpdateDate.lastCases}</p>
+                            <p className='m-0 font-weight-light'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>
                             <hr className='m-2' />
                         </Col>
                     </Row>
@@ -26,12 +27,12 @@ function RestrictionsList() {
                     </Row>
                     <Row className='mb-3'>
                         <Col>
-                            <h4 className='text-danger m-0'>{newOrOld('new_cases_today')}</h4>
+                            <h4 className='m-0'>{newOrOld('new_cases_today')}</h4>
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
                         <Col>
-                            <h4 className='text-danger m-0'>{newOrOld('dead_all_today')}</h4>
+                            <h4 className='m-0'>{newOrOld('dead_all_today')}</h4>
                             {updateWarning('dead_all_today')}
                             {percentageDifference('dead_all_today')}
                         </Col>
@@ -93,6 +94,11 @@ function RestrictionsList() {
                     <Row>
                         <Col>
                             <hr className='m-2' />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <small>Dane pobierane z <a href='https://twitter.com/MZ_GOV_PL'>{<FaTwitterSquare size={20} />}</a></small>
                         </Col>
                     </Row>
                 </Container>
