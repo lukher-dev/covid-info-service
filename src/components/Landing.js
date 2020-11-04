@@ -20,7 +20,7 @@ function Landing() {
                 <Container className="text-center" >
                     <Row>
                         <Col>
-                            <p className='m-0 font-weight-light'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>
+                            <p className='m-0'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>
                             <hr className='m-2' />
                         </Col>
                     </Row>
