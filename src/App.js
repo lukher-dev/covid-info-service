@@ -7,19 +7,21 @@ import {
   Route
 } from "react-router-dom";
 
+console.log(process.env)
+console.log(process.env.SITE_URL)
 
 function App() {
   return (
     <Router>
       <TopBar />
       <Switch>
-        <Route path={process.env.PUBLIC_URL + '/restrictions'}>
+        <Route path={process.env.SITE_URL + '/restrictions'}>
           <Restrictions />
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/statistics'}>
+        <Route path={process.env.SITE_URL + '/statistics'}>
           <Landing />
         </Route>
-        <Route path={process.env.PUBLIC_URL + '/'}>
+        <Route path={process.env.SITE_URL + '/'}>
           <Landing />
         </Route>
       </Switch>
