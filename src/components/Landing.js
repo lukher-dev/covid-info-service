@@ -7,7 +7,7 @@ import lastUpdateDate from '../data/lastUpdateDate.json'
 import { newOrOld, percentageDifference, updateWarning } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 
-function RestrictionsList() {
+function Landing() {
     ReactGa.pageview(window.location.pathname);
     return (
         <div>
@@ -126,4 +126,4 @@ function RestrictionsList() {
     );
 }
 
-export default RestrictionsList;
+export default Landing;

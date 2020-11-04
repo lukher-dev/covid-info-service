@@ -1,15 +1,15 @@
 function SingleRestriction(props) {
     return (
         <li>
-            <p>{props.content}</p>
+            <p className='m-0'>{props.content}</p>
             {props.details &&
                 <ul>
                     {props.details.map(detail => {
-                        return <li key={detail} className="font-weight-light">{detail}</li>
+                        return <li key={detail} className="font-weight-light">{<small>{detail}</small>}</li>
                     })}
                 </ul>
             }
-            <hr />
+            <hr className='m-2' />
         </li>
     );
 }
