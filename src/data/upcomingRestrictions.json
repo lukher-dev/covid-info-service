@@ -10,9 +10,6 @@
             },
             {
                 "content": "Wydarzenia sportowe bez udziału publiczonści"
-            },
-            {
-                "content": "Zawieszona działaność basenów, aquaparków, siłowni"
             }
         ]
     },
@@ -24,26 +21,6 @@
             },
             {
                 "content": "Kościoły - 1os/15m2"
-            },
-            {
-                "content": "Dzieci i młodzież do 16 roku życia muszą przemieszczać się pod opieką rodzica lub opiekuna",
-                "details": [
-                    "obowiązuje od poniedziałku do piątku w godzinach 8:00-16:00"
-                ]
-            },
-            {
-                "content": "Zgromadzenia publiczne do max. 5 osób"
-            },
-            {
-                "content": "Zakaz organizacji spotkań i imprez"
-            },
-            {
-                "content": "Seniorzy (zwłaszcza osoby 70+) powinni ograniczyć przemieszczanie się do minimum",
-                "details": [
-                    "nie dotyczy wykonywania czynności zawodowych",
-                    "nie dotyczy zaspokajania niezbędnych potrzeb związanych z bieżącymi sprawami życia codziennego",
-                    "nie dotyczy sprawowania lub uczestniczenia w sprawowaniu kultu religijnego, w tym czynności lub obrzędów religijnych"
-                ]
             }
         ]
     },
@@ -65,22 +42,6 @@
             },
             {
                 "content": "Hotele tylko dla gości służbowych"
-            },
-            {
-                "content": "Zawieszenie działaności senatoriów"
-            },
-            {
-                "content": "Zakaz działalności stacjonarnej restauracji",
-                "details": [
-                    "możliwa jest jedynie obsługa na wynos oraz na dowóz"
-                ]
-            },
-            {
-                "content": "Ograniczenia liczby miejsc w komunikacji publicznej",
-                "details": [
-                    "50% liczby miejsc siedzących",
-                    "30% liczby wszystkich miejsc siedzących i stojących, przy jednoczesnym pozostawieniu w pojeździe co najmniej 50% miejsc siedzących niezajętych"
-                ]
             }
         ]
     }
