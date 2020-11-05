@@ -103,9 +103,6 @@ function Landing() {
                         <Col className='p-0 m-2'>
                             <Button className='restrictions-button p-0' block><Link to="/restrictions"><p className='m-2 text-white'>Zobacz obostrzenia</p></Link></Button>
                         </Col>
-                        {/* <Col className='p-0 m-2'>
-                            <Link to="/statistics"><Button className='w-100'>Statystyki</Button></Link>
-                        </Col> */}
                     </Row>
                 </Container>
             </Jumbotron>

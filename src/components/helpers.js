@@ -39,7 +39,7 @@ export function theAverage() {
 
 export function doomCounterValue() {
     var avg = theAverage()
-    const max = 75 / 100
+    const max = 80 / 100
     const doomCounterValues = []
     const doomCounterlabels = []
     if (avg < 10) {
