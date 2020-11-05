@@ -103,7 +103,6 @@ export function doomCounterValue() {
         doomCounterlabels.push('')
         doomCounterlabels.push(labelCreator(avg))
     }
-    console.log(doomCounterlabels)
     return [doomCounterValues, doomCounterlabels, avg]
 }
 

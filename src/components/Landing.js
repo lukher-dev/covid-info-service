@@ -12,7 +12,6 @@ import DoomBar from './statistics/DoomBar'
 function Landing() {
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
-        console.log(window.location.pathname + window.location.search);
     });
     return (
         <div>
@@ -25,19 +24,33 @@ function Landing() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm='4' xs={{ span: 6 }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
                             <h6>Nowe zakażenia:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('new_cases_today'))}</h4>
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
-                        <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }} className='mb-3'>
+                            <h6>Liczba testów:</h6>
+                            <h4>{newOrOld('tests_done_today')}</h4>
+                            {updateWarning('tests_done_today')}
+                            <br />
+                        </Col>
+                        <Col lg='3' md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }} className='mb-3'>
+                            <h6>Odsetek wyników dodatnich:</h6>
+                            <h4>{newOrOld('percent_positive')}</h4>
+                            {updateWarning('percent_positive')}
+                            {percentageDifference('percent_positive_value')}
+                            <br />
+                        </Col>
+                        {/* OLD - before adding % of positive cases */}
+                        {/* <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
                             <h6>Aktywne przypadki:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
                             {updateWarning('active_cases')}
                             {percentageDifference('active_cases')}
-                        </Col>
-                        <Col sm={{ span: 4, order: 'last' }} xs={{ span: 6 }} className='mb-3'>
+                        </Col> */}
+                        <Col lg='3' md={{ span: 6, order: 2 }} xs={{ span: 6, order: 2 }} className='mb-3'>
                             <h6>Nowe zgony:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('dead_all_today'))}</h4>
                             {updateWarning('dead_all_today')}
@@ -51,11 +64,18 @@ function Landing() {
                     </Row>
                     <Row>
                         <Col lg={{ span: 3, order: 1 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }}>
+                            <h6>Aktywne przypadki:</h6>
+                            <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
+                            {updateWarning('active_cases')}
+                            {percentageDifference('active_cases')}
+                        </Col>
+                        {/* OLD - before adding % of positive cases */}
+                        {/* <Col lg={{ span: 3, order: 1 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }}>
                             <h6>Liczba testów:</h6>
                             <h4>{newOrOld('tests_done_today')}</h4>
                             {updateWarning('tests_done_today')}
                             <br />
-                        </Col>
+                        </Col> */}
                         <Col lg={{ span: 3, order: 2 }} md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }}>
                             <h6>Zajęte respiratory:</h6>
                             <h5>{insertThinSpace(newOrOld('occupied_respirator_count'))}/{insertThinSpace(newOrOld('respirator_count'))}</h5>
