@@ -16,7 +16,7 @@ function Landing() {
     return (
         <div>
             <Jumbotron className='p-0 m-2' >
-                <Container className="text-center" >
+                <Container className="text-center pt-2" >
                     <Row>
                         <Col>
                             <p className='m-0'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>

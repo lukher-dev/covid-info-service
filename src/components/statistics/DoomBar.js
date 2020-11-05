@@ -6,7 +6,7 @@ function DoomBar() {
     const [doomCounterValues, doomCounterlabels, average] = doomCounterValue()
     return (
         <Jumbotron className='p-0 m-2' >
-            <Container className="text-center" >
+            <Container className="text-center pt-2" >
                 <Row>
                     <Col>
                         <h6>Etapy zasad bezpieczeństwa</h6>
@@ -51,7 +51,7 @@ function DoomBar() {
                                 <small>Bezpiecznik</small>
                             </div>
                             <div className='doom-bar-label d-md-inline d-lg-inline d-none' style={{ width: (10 / 0.80).toString() + '%' }}>
-                                <small>Kwarantanna narodowa (od 70 lub 75)</small>
+                                <small>Kwarantanna narodowa</small>
                             </div>
                         </Row>
                         <hr className='m-2' />
