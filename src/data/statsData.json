@@ -21,6 +21,8 @@
         "occupied_bed_count": "19114",
         "occupied_respirator_count": "1615",
         "per_voivodeship": {},
+        "percent_positive": "40.45 %",
+        "percent_positive_value": 40.45156482861401,
         "respirator_count": "2144",
         "tests_done_today": "67,1 tys."
     },
@@ -37,6 +39,8 @@
         "occupied_bed_count": "18654",
         "occupied_respirator_count": "1625",
         "per_voivodeship": {},
+        "percent_positive": "35.79 %",
+        "percent_positive_value": 35.78550724637681,
         "respirator_count": "2094",
         "tests_done_today": "69 tys."
     }

@@ -26,6 +26,7 @@ today = {
         'occupied_respirator_count': None,
         'healed_count': None,
         'percent_positive' : None,
+        'percent_positive_value' : None,
         'per_voivodeship': {}}
 
 yesterday = {
@@ -41,6 +42,7 @@ yesterday = {
         'occupied_respirator_count': None,
         'healed_count': None,
         'percent_positive' : None,
+        'percent_positive_value' : None,
         'per_voivodeship': {}}
 
 cases_history = []
@@ -117,7 +119,6 @@ def extract_info_from_tweet(tweet):
                         'ci.gu doby wykonano ponad (.+) test.w', text)
                 if match and not curent_data['tests_done_today']:
                         curent_data['tests_done_today'] = match.groups()[0]
-                        print(parse_test_number(curent_data['tests_done_today']))
 
                 # match = re.findall(
                 #         '(\\S+ie)go .([ \\d]+).', text)
@@ -182,6 +183,16 @@ if __name__ == '__main__':
 
         try:
                 data['yesterday']['percent_positive'] = '{0:.2f} %'.format(float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100)
+        except:
+                pass
+
+        try:
+                data['today']['percent_positive_value'] = float(data['today']['new_cases_today']) / parse_test_number(data['today']['tests_done_today']) * 100
+        except:
+                pass
+
+        try:
+                data['yesterday']['percent_positive_value'] = float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100
         except:
                 pass
 
