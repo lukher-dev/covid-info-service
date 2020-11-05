@@ -30,18 +30,16 @@ function Landing() {
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
-                        <Col lg='3' md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }} >
                             <h6>Liczba testów:</h6>
                             <h4>{newOrOld('tests_done_today')}</h4>
                             {updateWarning('tests_done_today')}
-                            <br />
                         </Col>
-                        <Col lg='3' md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }} >
                             <h6>Odsetek wyników dodatnich:</h6>
                             <h4>{newOrOld('percent_positive')}</h4>
                             {updateWarning('percent_positive')}
                             {percentageDifference('percent_positive_value')}
-                            <br />
                         </Col>
                         {/* OLD - before adding % of positive cases */}
                         {/* <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
