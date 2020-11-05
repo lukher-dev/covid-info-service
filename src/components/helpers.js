@@ -27,13 +27,13 @@ export function doomCounterValue() {
     for (var i = 0; i < statsData.casesHistory.length; i++) {
         sum += parseInt(statsData.casesHistory[i], 10);
     }
-    var avg = (sum / statsData.casesHistory.length) / 38383000 * 100000;
+    var avg = (sum / statsData.casesHistory.length) / 37832148 * 100000;
 
     const max = 75 / 100
     const doomCounterValues = []
     const doomCounterActualValues = []
     if (avg < 10) {
-        doomCounterValues.push((avg - 2) / max)
+        doomCounterValues.push(avg / max)
         doomCounterValues.push(0)
         doomCounterValues.push(0)
         doomCounterValues.push(0)

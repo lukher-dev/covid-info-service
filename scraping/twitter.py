@@ -167,5 +167,9 @@ if __name__ == '__main__':
                 data['yesterday']['active_cases'] = str(int(data['yesterday']['cases_global']) - int(data['yesterday']['healed_count']) - int(data['yesterday']['dead_global']))
         except:
                 pass
+        try:
+                data['casesHistory'] = data['casesHistory'][:7]
+        except:
+                pass
 
         print(json.dumps(data, sort_keys=True, indent=4))
