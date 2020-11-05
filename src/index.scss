@@ -85,6 +85,10 @@ $light: #f0f0f5;
   height: 50px;
 }
 
+.doom-light-bar .progress-bar div{
+  z-index: 2;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

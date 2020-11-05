@@ -9,7 +9,7 @@ import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
 
 function Landing() {
-    const [doomCounterValues, doomCounterActualValues, average] = doomCounterValue()
+    const [doomCounterValues, doomCounterlabels, average] = doomCounterValue()
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
         console.log(window.location.pathname + window.location.search);
@@ -98,18 +98,18 @@ function Landing() {
                             <h6>Etapy zasad bezpieczeństwa</h6>
                             <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
                             <ProgressBar className='doom-bar'>
-                                <ProgressBar className="color-green" now={doomCounterValues[0]} label={Math.floor(doomCounterActualValues[0]).toString() + '/10'} />
-                                <ProgressBar className="color-yellow" now={doomCounterValues[1]} label={Math.floor(doomCounterActualValues[1]).toString() + '/25'} />
-                                <ProgressBar className="color-red" now={doomCounterValues[2]} label={Math.floor(doomCounterActualValues[2]).toString() + '/50'} />
-                                <ProgressBar className="color-purple" now={doomCounterValues[3]} label={Math.floor(doomCounterActualValues[3]).toString() + '/70'} />
-                                <ProgressBar className="color-black" now={doomCounterValues[4]} label={Math.floor(doomCounterActualValues[4]).toString()} />
+                                <ProgressBar className="color-green" now={doomCounterValues[0]} />
+                                <ProgressBar className="color-yellow" now={doomCounterValues[1]} />
+                                <ProgressBar className="color-red" now={doomCounterValues[2]} />
+                                <ProgressBar className="color-purple" now={doomCounterValues[3]} />
+                                <ProgressBar className="color-black" now={doomCounterValues[4]} />
                             </ProgressBar>
                             <ProgressBar className='doom-light-bar'>
-                                <ProgressBar className="color-light-green" now={10 / 0.75} />
-                                <ProgressBar className="color-light-yellow" now={15 / 0.75} />
-                                <ProgressBar className="color-light-red" now={25 / 0.75} />
-                                <ProgressBar className="color-light-purple" now={20 / 0.75} />
-                                <ProgressBar className="color-light-black" now={5 / 0.75} />
+                                <ProgressBar className="color-light-green" now={10 / 0.75} label={doomCounterlabels[0]} />
+                                <ProgressBar className="color-light-yellow" now={15 / 0.75} label={doomCounterlabels[1]} />
+                                <ProgressBar className="color-light-red" now={25 / 0.75} label={doomCounterlabels[2]} />
+                                <ProgressBar className="color-light-purple" now={20 / 0.75} label={doomCounterlabels[3]} />
+                                <ProgressBar className="color-light-black" now={5 / 0.75} label={doomCounterlabels[4]} />
                             </ProgressBar>
                             <hr className='m-2' />
                             <small>Więcej informacji o etapach zasad bezpieczeństwa:</small>
