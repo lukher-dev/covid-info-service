@@ -28,13 +28,18 @@ function labelCreator(value, max) {
     return <div>{value.toString()}</div>
 }
 
-export function doomCounterValue() {
+export function theAverage() {
     var sum = 0;
     for (var i = 0; i < statsData.casesHistory.length; i++) {
         sum += parseInt(statsData.casesHistory[i], 10);
     }
     var avg = (sum / statsData.casesHistory.length) / 37832148 * 100000;
-    const max = 75 / 100
+    return avg
+}
+
+export function doomCounterValue() {
+    var avg = theAverage()
+    const max = 80 / 100
     const doomCounterValues = []
     const doomCounterlabels = []
     if (avg < 10) {
@@ -56,7 +61,7 @@ export function doomCounterValue() {
         doomCounterValues.push(0)
         doomCounterValues.push(0)
 
-        doomCounterlabels.push(labelCreator(avg, 10))
+        doomCounterlabels.push('')
         doomCounterlabels.push(labelCreator(avg, 25))
         doomCounterlabels.push('')
         doomCounterlabels.push('')
@@ -68,8 +73,8 @@ export function doomCounterValue() {
         doomCounterValues.push(0)
         doomCounterValues.push(0)
 
-        doomCounterlabels.push(labelCreator(avg, 10))
-        doomCounterlabels.push(labelCreator(avg, 25))
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
         doomCounterlabels.push(labelCreator(avg, 50))
         doomCounterlabels.push('')
         doomCounterlabels.push('')
@@ -80,9 +85,9 @@ export function doomCounterValue() {
         doomCounterValues.push((avg - 50) / max)
         doomCounterValues.push(0)
 
-        doomCounterlabels.push(labelCreator(avg, 10))
-        doomCounterlabels.push(labelCreator(avg, 25))
-        doomCounterlabels.push(labelCreator(avg, 50))
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
         doomCounterlabels.push(labelCreator(avg, 70))
         doomCounterlabels.push('')
     } else {
@@ -92,13 +97,12 @@ export function doomCounterValue() {
         doomCounterValues.push(20 / max)
         doomCounterValues.push((avg - 70) / max)
 
-        doomCounterlabels.push(labelCreator(avg, 10))
-        doomCounterlabels.push(labelCreator(avg, 25))
-        doomCounterlabels.push(labelCreator(avg, 50))
-        doomCounterlabels.push(labelCreator(avg, 70))
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
+        doomCounterlabels.push('')
         doomCounterlabels.push(labelCreator(avg))
     }
-    console.log(doomCounterlabels)
     return [doomCounterValues, doomCounterlabels, avg]
 }
 

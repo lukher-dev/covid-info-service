@@ -4,20 +4,19 @@ import {
     Link
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
-import { newOrOld, percentageDifference, updateWarning, doomCounterValue, insertThinSpace } from './helpers'
+import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
+import DoomBar from './statistics/DoomBar'
 
 function Landing() {
-    const [doomCounterValues, doomCounterlabels, average] = doomCounterValue()
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
-        console.log(window.location.pathname + window.location.search);
     });
     return (
         <div>
             <Jumbotron className='p-0 m-2' >
-                <Container className="text-center" >
+                <Container className="text-center pt-2" >
                     <Row>
                         <Col>
                             <p className='m-0'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>
@@ -25,19 +24,31 @@ function Landing() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm='4' xs={{ span: 6 }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
                             <h6>Nowe zakażenia:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('new_cases_today'))}</h4>
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
-                        <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
+                        <Col lg='3' md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }} >
+                            <h6>Liczba testów:</h6>
+                            <h4>{newOrOld('tests_done_today')}</h4>
+                            {updateWarning('tests_done_today')}
+                        </Col>
+                        <Col lg='3' md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }} >
+                            <h6>Odsetek wyników dodatnich:</h6>
+                            <h4>{newOrOld('percent_positive')}</h4>
+                            {updateWarning('percent_positive')}
+                            {percentageDifference('percent_positive_value')}
+                        </Col>
+                        {/* OLD - before adding % of positive cases */}
+                        {/* <Col sm='4' xs={{ span: 12, order: 'last' }} className='mb-3'>
                             <h6>Aktywne przypadki:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
                             {updateWarning('active_cases')}
                             {percentageDifference('active_cases')}
-                        </Col>
-                        <Col sm={{ span: 4, order: 'last' }} xs={{ span: 6 }} className='mb-3'>
+                        </Col> */}
+                        <Col lg='3' md={{ span: 6, order: 2 }} xs={{ span: 6, order: 2 }} className='mb-3'>
                             <h6>Nowe zgony:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('dead_all_today'))}</h4>
                             {updateWarning('dead_all_today')}
@@ -51,11 +62,18 @@ function Landing() {
                     </Row>
                     <Row>
                         <Col lg={{ span: 3, order: 1 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }}>
+                            <h6>Aktywne przypadki:</h6>
+                            <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
+                            {updateWarning('active_cases')}
+                            {percentageDifference('active_cases')}
+                        </Col>
+                        {/* OLD - before adding % of positive cases */}
+                        {/* <Col lg={{ span: 3, order: 1 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }}>
                             <h6>Liczba testów:</h6>
                             <h4>{newOrOld('tests_done_today')}</h4>
                             {updateWarning('tests_done_today')}
                             <br />
-                        </Col>
+                        </Col> */}
                         <Col lg={{ span: 3, order: 2 }} md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }}>
                             <h6>Zajęte respiratory:</h6>
                             <h5>{insertThinSpace(newOrOld('occupied_respirator_count'))}/{insertThinSpace(newOrOld('respirator_count'))}</h5>
@@ -91,33 +109,7 @@ function Landing() {
                     </Row>
                 </Container>
             </Jumbotron>
-            <Jumbotron className='p-0 m-2' >
-                <Container className="text-center" >
-                    <Row>
-                        <Col>
-                            <h6>Etapy zasad bezpieczeństwa</h6>
-                            <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
-                            <ProgressBar className='doom-bar'>
-                                <ProgressBar className="color-green" now={doomCounterValues[0]} />
-                                <ProgressBar className="color-yellow" now={doomCounterValues[1]} />
-                                <ProgressBar className="color-red" now={doomCounterValues[2]} />
-                                <ProgressBar className="color-purple" now={doomCounterValues[3]} />
-                                <ProgressBar className="color-black" now={doomCounterValues[4]} />
-                            </ProgressBar>
-                            <ProgressBar className='doom-light-bar'>
-                                <ProgressBar className="color-light-green" now={10 / 0.75} label={doomCounterlabels[0]} />
-                                <ProgressBar className="color-light-yellow" now={15 / 0.75} label={doomCounterlabels[1]} />
-                                <ProgressBar className="color-light-red" now={25 / 0.75} label={doomCounterlabels[2]} />
-                                <ProgressBar className="color-light-purple" now={20 / 0.75} label={doomCounterlabels[3]} />
-                                <ProgressBar className="color-light-black" now={5 / 0.75} label={doomCounterlabels[4]} />
-                            </ProgressBar>
-                            <hr className='m-2' />
-                            <small>Więcej informacji o etapach zasad bezpieczeństwa:</small>
-                            <p><a href='https://twitter.com/PremierRP/status/1323980694033489923/photo/1'>{<FaTwitterSquare size={20} />}Kancelaria Premiera</a></p>
-                        </Col>
-                    </Row>
-                </Container>
-            </Jumbotron>
+            <DoomBar />
             <Jumbotron className='p-0 m-2' >
                 <Container>
                     <Row className="text-center">
@@ -129,9 +121,6 @@ function Landing() {
                         <Col className='p-0 m-2'>
                             <Button className='restrictions-button p-0' block><Link to="/restrictions"><p className='m-2 text-white'>Zobacz obostrzenia</p></Link></Button>
                         </Col>
-                        {/* <Col className='p-0 m-2'>
-                            <Link to="/statistics"><Button className='w-100'>Statystyki</Button></Link>
-                        </Col> */}
                     </Row>
                 </Container>
             </Jumbotron>
