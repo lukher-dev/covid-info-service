@@ -6,7 +6,7 @@ export function newOrOld(field) {
 
 export function updateWarning(field) {
     if (!statsData['today'][field]) {
-        return <p className='adnotation text-danger m-0'>(Wczorajsza wartość)</p>
+        return <span className='adnotation text-danger m-0'>(Wczorajsza wartość)</span>
     }
 }
 
@@ -16,10 +16,10 @@ export function percentageDifference(field) {
     }
     const value = Math.floor(((statsData['today'][field] / statsData['yesterday'][field]) - 1) * 100)
     if (value > 0)
-        return <div className='adnotation text-danger'>({value}%↗)</div>
+        return <span className='adnotation text-danger'>({value}%↗)</span>
     if (value === 0)
-        return <div className='adnotation text-secondary'>(-%)</div>
-    return <div className='adnotation text-success'>({value}%↘)</div>
+        return <span className='adnotation text-secondary'>(-%)</span>
+    return <span className='adnotation text-success'>({value}%↘)</span>
 }
 
 function labelCreator(value, max) {
@@ -28,17 +28,8 @@ function labelCreator(value, max) {
     return <div>{value.toString()}</div>
 }
 
-export function theAverage() {
-    var sum = 0;
-    for (var i = 0; i < statsData.casesHistory.length; i++) {
-        sum += parseInt(statsData.casesHistory[i], 10);
-    }
-    var avg = (sum / statsData.casesHistory.length) / 37832148 * 100000;
-    return avg
-}
-
 export function doomCounterValue() {
-    var avg = theAverage()
+    var avg = newOrOld('the_average')
     const max = 80 / 100
     const doomCounterValues = []
     const doomCounterlabels = []

@@ -1,16 +1,22 @@
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import { doomCounterValue } from './../helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
+import { updateWarning, newOrOld, percentageDifference } from '../helpers'
 
 function DoomBar() {
-    const [doomCounterValues, doomCounterlabels, average] = doomCounterValue()
+    const [doomCounterValues, doomCounterlabels] = doomCounterValue()
     return (
         <Jumbotron className='p-0 m-2' >
             <Container className="text-center pt-2" >
                 <Row>
                     <Col>
                         <h6>Etapy zasad bezpieczeństwa</h6>
-                        <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
+                        <p className="font-weight-light">
+                            Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców:
+                            <b> {Math.round(newOrOld('the_average') * 1000) / 1000} {percentageDifference('the_average')}
+                                {updateWarning('the_average')}
+                            </b>
+                        </p>
                         <ProgressBar className='doom-bar'>
                             <ProgressBar className="color-green" now={doomCounterValues[0]} />
                             <ProgressBar className="color-yellow" now={doomCounterValues[1]} />

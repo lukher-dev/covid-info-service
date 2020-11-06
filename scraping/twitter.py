@@ -12,6 +12,7 @@ consumer_secret = sys.argv[2]
 access_key = sys.argv[3]
 access_secret = sys.argv[4]
 
+history_len = 8
 
 today = {
         'dead_covid_today': None,
@@ -143,15 +144,23 @@ def get_all_tweets(screen_name):
         alltweets = api.user_timeline(screen_name = screen_name,count=200, include_ext_alt_text  = True, tweet_mode='extended')
         oldest = alltweets[-1].id - 1
 
-        while len(cases_history)<7:
+        while len(cases_history)<history_len:
                 for tweet in alltweets:
                         extract_info_from_tweet(tweet)
 
                 alltweets = api.user_timeline(screen_name=screen_name, count=200, include_ext_alt_text  = True, tweet_mode='extended', min_id=oldest)
                 oldest = alltweets[-1].id - 1
 
+
 def parse_test_number(tests):
-        return float(tests.replace("tys.", "").replace(",", ".")) * 1000 
+        return float(tests.replace("tys.", "").replace(",", ".")) * 1000
+
+def calculate_the_average(history):
+        sum = 0
+        for i in history:
+                sum += int(i)
+        avg = (sum / 7) / 37832148 * 100000
+        return avg
 
 if __name__ == '__main__':
         get_all_tweets("MZ_GOV_PL")
@@ -197,7 +206,17 @@ if __name__ == '__main__':
                 pass
 
         try:
-                data['casesHistory'] = data['casesHistory'][:7]
+                data['casesHistory'] = data['casesHistory'][:history_len]
+        except:
+                pass
+
+        try:
+                if data['today']['new_cases_today']:
+                        data['today']['the_average'] = calculate_the_average(data['casesHistory'][:7])
+        except:
+                pass
+        try:
+                data['yesterday']['the_average'] = calculate_the_average(data['casesHistory'][1:8])
         except:
                 pass
 
