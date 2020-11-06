@@ -188,12 +188,12 @@ if __name__ == '__main__':
                 pass
 
         try:
-                data['today']['percent_positive'] = '{0:.2f} %'.format(float(data['today']['new_cases_today']) / parse_test_number(data['today']['tests_done_today']) * 100)
+                data['today']['percent_positive'] = '{0:.2f}%'.format(float(data['today']['new_cases_today']) / parse_test_number(data['today']['tests_done_today']) * 100).replace('.', ',')
         except:
                 pass
 
         try:
-                data['yesterday']['percent_positive'] = '{0:.2f} %'.format(float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100)
+                data['yesterday']['percent_positive'] = '{0:.2f}%'.format(float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100).replace('.', ',')
         except:
                 pass
 
