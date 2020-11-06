@@ -28,6 +28,7 @@ today = {
         'healed_count': None,
         'percent_positive' : None,
         'percent_positive_value' : None,
+        'the_average': None,
         'per_voivodeship': {}}
 
 yesterday = {
@@ -44,6 +45,7 @@ yesterday = {
         'healed_count': None,
         'percent_positive' : None,
         'percent_positive_value' : None,
+        'the_average': None,
         'per_voivodeship': {}}
 
 cases_history = []
