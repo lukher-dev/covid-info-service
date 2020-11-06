@@ -11,7 +11,7 @@ function DoomBar() {
                     <Col>
                         <h6>Etapy zasad bezpieczeństwa</h6>
                         <p className="font-weight-light">Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców: <b>{Math.round(average * 1000) / 1000}</b></p>
-                        <ProgressBar className='doom-bar mt-5'>
+                        <ProgressBar className='doom-bar'>
                             <ProgressBar className="color-green" now={doomCounterValues[0]} />
                             <ProgressBar className="color-yellow" now={doomCounterValues[1]} />
                             <ProgressBar className="color-red" now={doomCounterValues[2]} />
