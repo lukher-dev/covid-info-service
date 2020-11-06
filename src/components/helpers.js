@@ -6,7 +6,7 @@ export function newOrOld(field) {
 
 export function updateWarning(field) {
     if (!statsData['today'][field]) {
-        return <span className='adnotation text-danger m-0'>(Wczorajsza wartość)</span>
+        return <span className='annotation text-danger m-0'>(Wczorajsza wartość)</span>
     }
 }
 
@@ -16,10 +16,10 @@ export function percentageDifference(field) {
     }
     const value = Math.floor(((statsData['today'][field] / statsData['yesterday'][field]) - 1) * 100)
     if (value > 0)
-        return <span className='adnotation text-danger'>({value}%↗)</span>
+        return <span className='annotation text-danger'>({value}%↗)</span>
     if (value === 0)
-        return <span className='adnotation text-secondary'>(-%)</span>
-    return <span className='adnotation text-success'>({value}%↘)</span>
+        return <span className='annotation text-secondary'>(-%)</span>
+    return <span className='annotation text-success'>({value}%↘)</span>
 }
 
 function labelCreator(value, max) {
