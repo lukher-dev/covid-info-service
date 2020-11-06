@@ -13,7 +13,9 @@ function Restrictions() {
 
     return (
         <div>
-            <Jumbotron fluid className="m-0 pt-0">
+            {/* Commented out, as there are currentlył no new upcoming restrictions  */}
+
+            {/* <Jumbotron fluid className="m-0 pt-0">
                 <Alert className='p-0 m-0' variant='danger'><h4 className="text-center">Nadchodzące obostrzenia</h4></Alert>
                 <Container>
                     <Row className="text-center">
@@ -23,7 +25,7 @@ function Restrictions() {
                     </Row>
                 </Container>
                 <RestrictionsList restrictions={UpcomingRestrictionsData} />
-            </Jumbotron>
+            </Jumbotron> */}
             <Jumbotron fluid className="p-0 m-0">
                 <Alert className='p-0 m-0' variant='info'><h4 className="text-center">Aktualne obostrzenia</h4></Alert>
                 <Container>

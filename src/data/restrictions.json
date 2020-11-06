@@ -44,7 +44,7 @@
             {
                 "content": "Nauka zdalna",
                 "details": [
-                    "dla uczniów klas IV-VIII szkół podstawowych",
+                    "dla wszystkich klas szkół podstawowych",
                     "dla wszystkich klas szkół ponadpodstawowych",
                     "dla centrów kształcenia zawodowego",
                     "słuchaczy placówek kształcenia ustawicznego"
@@ -58,8 +58,14 @@
             {
                 "content": "Limit klientów w sklepach, na targu i poczcie",
                 "details": [
-                    "do 100 m kw. - 5 osób na 1 kasę",
-                    "powyżej 100 m kw. - 1 osoba na 15 m kw."
+                    "do 100 m kw. - 1os / 10 m kw.",
+                    "powyżej 100 m kw. - 1os / 15 m kw."
+                ]
+            },
+            {
+                "content": "Zamknięcie sklepów w galeriach handlowych z wyjątkiem sklepów z artykułami:",
+                "details": [
+                    "spożywczymi, kosmetycznymi, środkami czystości, wyrobami medycznymi, remontowo-budowlanymi, dla zwierząt, prasą oraz lokali z usługami"
                 ]
             },
             {
@@ -81,6 +87,21 @@
                     "nie dotyczy zajęć dla uczniów i studentów",
                     "nie dotyczy hoteli (tylko dla gości powyżej jednej doby)"
                 ]
+            },
+            {
+                "content": "Zawieszona działalność placówek kultury",
+                "details": [
+                    "dotyczy min. teatrów, kin, muzeów, galerii sztuk, domów kultury i bibliotek"
+                ]
+            },
+            {
+                "content": "W kościołach maksymalnie 1os / 15 m kw."
+            },
+            {
+                "content": "Hotele tylko dla gości służbowych"
+            },
+            {
+                "content": "Wydarzenia sportowe bez udziału publiczonści"
             }
         ]
     }
