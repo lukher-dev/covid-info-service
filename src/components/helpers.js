@@ -22,10 +22,6 @@ export function percentageDifference(field) {
     return <span className='adnotation text-success'>({value}%↘)</span>
 }
 
-export function percentPositive() {
-    return <span className='adnotation text-secondary'>{statsData['today']['percent_positive']} pozytywnych</span>
-}
-
 function labelCreator(value, max) {
     if (max)
         return <div>{Math.floor(Math.min(value, max)).toString() + '/' + max.toString()}</div>
