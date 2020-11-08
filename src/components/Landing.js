@@ -54,7 +54,7 @@ function Landing() {
                             <Row>
                                 <Col>
                                     <h4 className='m-0'>{newOrOld('tests_done_today')}</h4>
-                                    <small className='text-muted font-weight-normal'>{newOrOld('percent_positive')}pozytywnych</small>
+                                    <small className='text-muted font-weight-normal'>{newOrOld('percent_positive')} pozytywnych</small>
                                     {updateWarning('tests_done_today')}
                                 </Col>
                             </Row>
