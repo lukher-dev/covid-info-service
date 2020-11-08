@@ -27,7 +27,7 @@ function Restrictions() {
                 <RestrictionsList restrictions={UpcomingRestrictionsData} />
             </Jumbotron> */}
             <Jumbotron fluid className="p-0 m-0">
-                <Alert className='p-0 m-0' variant='info'><h4 className="text-center">Aktualne obostrzenia</h4></Alert>
+                <Alert className='p-0 m-0 pt-1' variant='info'><h4 className="text-center">Aktualne obostrzenia</h4></Alert>
                 <Container>
                     <Row className="text-center">
                         <Col className='p-0'>

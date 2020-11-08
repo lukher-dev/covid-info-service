@@ -4,7 +4,7 @@ import {
     Link
 } from "react-router-dom";
 import lastUpdateDate from '../data/lastUpdateDate.json'
-import { newOrOld, percentageDifference, updateWarning, insertThinSpace, percentPositive } from './helpers'
+import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
 import DoomBar from './statistics/DoomBar'
@@ -24,19 +24,19 @@ function Landing() {
                         </Col>
                     </Row>
                     <Row>
-                        <Col lg='4' md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
+                        <Col md={{ span: 4, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
                             <h6>Nowe zakażenia:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('new_cases_today'))}</h4>
                             {updateWarning('new_cases_today')}
                             {percentageDifference('new_cases_today')}
                         </Col>
-                        <Col lg='4' md={{ span: 6, order: 2 }} xs={{ span: 12, order: 3 }} className='mb-3'>
+                        <Col md={{ span: 4, order: 2 }} xs={{ span: 12, order: 3 }} className='mb-3'>
                             <h6>Aktywne przypadki:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('active_cases'))}</h4>
                             {updateWarning('active_cases')}
                             {percentageDifference('active_cases')}
                         </Col>
-                        <Col lg='4' md={{ span: 6, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
+                        <Col md={{ span: 4, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
                             <h6>Nowe zgony:</h6>
                             <h4 className='m-0'>{insertThinSpace(newOrOld('dead_all_today'))}</h4>
                             {updateWarning('dead_all_today')}
@@ -51,9 +51,13 @@ function Landing() {
                     <Row>
                         <Col lg={{ span: 3, order: 1 }} md={{ span: 6, order: 1 }} xs={{ span: 6, order: 1 }}>
                             <h6>Liczba testów:</h6>
-                            <h4 className='m-0'>{newOrOld('tests_done_today')}</h4>
-                            {updateWarning('tests_done_today')}
-                            {percentPositive()}
+                            <Row>
+                                <Col>
+                                    <h4 className='m-0'>{newOrOld('tests_done_today')}</h4>
+                                    <small className='text-muted font-weight-normal'>{newOrOld('percent_positive')}pozytywnych</small>
+                                    {updateWarning('tests_done_today')}
+                                </Col>
+                            </Row>
                             <br />
                         </Col>
                         <Col lg={{ span: 3, order: 2 }} md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }}>
