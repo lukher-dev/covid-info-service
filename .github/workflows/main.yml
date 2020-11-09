@@ -53,6 +53,9 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Handle 404 fallback
+        run: cp ./build/index.html ./build/404.html
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
