@@ -99,7 +99,7 @@ def extract_info_from_tweet(tweet):
                 text = tweet.full_text
 
                 match = re.search(
-                        'Z powodu COVID.19 zmar.o (\\d+) os.b, .+ innymi .+ (\\d+) os.b', text)
+                        'COVID.19 zmar.. (\\d+) .+ innymi .+ zmar.. (\\d+) os', text)
                 if match and (not curent_data['dead_covid_today'] and not curent_data['dead_intercurrent_today']):
                         curent_data['dead_covid_today'] = match.groups()[0].replace(" ", "")
                         curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "")
