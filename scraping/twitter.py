@@ -6,6 +6,7 @@ import json
 import re
 from datetime import datetime
 import sys
+import math
 
 consumer_key = sys.argv[1]
 consumer_secret = sys.argv[2]
@@ -157,6 +158,16 @@ def get_all_tweets(screen_name):
 def parse_test_number(tests):
         return float(tests.replace("tys.", "").replace(",", ".")) * 1000
 
+def doom_proximity(history):
+        sum = 0
+        required_for_lockdown_sum = 37832148 / 100000 * 70 * 7
+        next_day_required = [0,0,0,0,0,0]
+        for i in range(6):
+                sum += int(history[i])
+                print(sum, required_for_lockdown_sum, (required_for_lockdown_sum - sum), (required_for_lockdown_sum - sum)/(6-i))
+                next_day_required[5-i] = math.ceil((required_for_lockdown_sum - sum) / (6 - i))
+        return next_day_required
+        
 def calculate_the_average(history):
         sum = 0
         for i in history:
