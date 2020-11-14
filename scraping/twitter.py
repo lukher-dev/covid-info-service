@@ -14,7 +14,7 @@ access_secret = sys.argv[4]
 
 history_len = 8
 
-today = {
+day_data_template = {
         'dead_covid_today': None,
         'dead_intercurrent_today': None,
         'new_cases_today': None,
@@ -31,22 +31,8 @@ today = {
         'the_average': None,
         'per_voivodeship': {}}
 
-yesterday = {
-        'dead_covid_today': None,
-        'dead_intercurrent_today': None,
-        'new_cases_today': None,
-        'cases_global': None,
-        'dead_global': None,
-        'tests_done_today': None,
-        'bed_count': None,
-        'occupied_bed_count': None,
-        'respirator_count': None,
-        'occupied_respirator_count': None,
-        'healed_count': None,
-        'percent_positive' : None,
-        'percent_positive_value' : None,
-        'the_average': None,
-        'per_voivodeship': {}}
+today = day_data_template.copy()
+yesterday = day_data_template.copy()
 
 cases_history = []
 
