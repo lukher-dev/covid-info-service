@@ -14,7 +14,7 @@ access_secret = sys.argv[4]
 
 history_len = 8
 
-today = {
+day_data_template = {
         'dead_covid_today': None,
         'dead_intercurrent_today': None,
         'new_cases_today': None,
@@ -31,22 +31,8 @@ today = {
         'the_average': None,
         'per_voivodeship': {}}
 
-yesterday = {
-        'dead_covid_today': None,
-        'dead_intercurrent_today': None,
-        'new_cases_today': None,
-        'cases_global': None,
-        'dead_global': None,
-        'tests_done_today': None,
-        'bed_count': None,
-        'occupied_bed_count': None,
-        'respirator_count': None,
-        'occupied_respirator_count': None,
-        'healed_count': None,
-        'percent_positive' : None,
-        'percent_positive_value' : None,
-        'the_average': None,
-        'per_voivodeship': {}}
+today = day_data_template.copy()
+yesterday = day_data_template.copy()
 
 cases_history = []
 
@@ -158,54 +144,30 @@ def parse_test_number(tests):
         return float(tests.replace("tys.", "").replace(",", ".")) * 1000
 
 def calculate_the_average(history):
-        sum = 0
-        for i in history:
-                sum += int(i)
-        avg = (sum / 7) / 37832148 * 100000
+        sum_history = sum([int(i) for i in history])
+        avg = (sum_history / 7) / 37832148 * 100000
         return avg
 
 if __name__ == '__main__':
         get_all_tweets("MZ_GOV_PL")
 
-        try:
-                data['today']['dead_all_today'] = str(int(data['today']['dead_intercurrent_today']) + int(data['today']['dead_covid_today']))
-        except:
-                pass
-
-        try:
-                data['yesterday']['dead_all_today'] = str(int(data['yesterday']['dead_intercurrent_today']) + int(data['yesterday']['dead_covid_today']))
-        except:
-                pass
-
-        try:
-                data['today']['active_cases'] = str(int(data['today']['cases_global']) - int(data['today']['healed_count']) - int(data['today']['dead_global']))
-        except:
-                pass
-
-        try:
-                data['yesterday']['active_cases'] = str(int(data['yesterday']['cases_global']) - int(data['yesterday']['healed_count']) - int(data['yesterday']['dead_global']))
-        except:
-                pass
-
-        try:
-                data['today']['percent_positive'] = '{0:.2f}%'.format(float(data['today']['new_cases_today']) / parse_test_number(data['today']['tests_done_today']) * 100).replace('.', ',')
-        except:
-                pass
-
-        try:
-                data['yesterday']['percent_positive'] = '{0:.2f}%'.format(float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100).replace('.', ',')
-        except:
-                pass
-
-        try:
-                data['today']['percent_positive_value'] = float(data['today']['new_cases_today']) / parse_test_number(data['today']['tests_done_today']) * 100
-        except:
-                pass
-
-        try:
-                data['yesterday']['percent_positive_value'] = float(data['yesterday']['new_cases_today']) / parse_test_number(data['yesterday']['tests_done_today']) * 100
-        except:
-                pass
+        for day in ['today', 'yesterday']:
+                try:
+                        data[day]['dead_all_today'] = str(int(data[day]['dead_intercurrent_today']) + int(data[day]['dead_covid_today']))
+                except:
+                        pass
+                try:
+                        data[day]['active_cases'] = str(int(data[day]['cases_global']) - int(data[day]['healed_count']) - int(data[day]['dead_global']))
+                except:
+                        pass
+                try:
+                        data[day]['percent_positive'] = '{0:.2f} %'.format(float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100).replace('.', ',')
+                except:
+                        pass
+                try:
+                        data[day]['percent_positive_value'] = float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100
+                except:
+                        pass
 
         try:
                 data['casesHistory'] = data['casesHistory'][:history_len]
