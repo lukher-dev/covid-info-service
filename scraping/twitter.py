@@ -144,10 +144,8 @@ def parse_test_number(tests):
         return float(tests.replace("tys.", "").replace(",", ".")) * 1000
 
 def calculate_the_average(history):
-        sum = 0
-        for i in history:
-                sum += int(i)
-        avg = (sum / 7) / 37832148 * 100000
+        sum_history = sum([int(i) for i in history])
+        avg = (sum_history / 7) / 37832148 * 100000
         return avg
 
 if __name__ == '__main__':
