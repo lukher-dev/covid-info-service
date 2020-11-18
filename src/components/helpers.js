@@ -14,7 +14,7 @@ export function percentageDifference(field) {
     if (!statsData['today'][field]) {
         return null
     }
-    const value = Math.floor(((statsData['today'][field] / statsData['yesterday'][field]) - 1) * 100)
+    const value = Math.ceil(((statsData['today'][field] / statsData['yesterday'][field]) - 1) * 10000) / 100
     if (value > 0)
         return <span className='adnotation text-danger'>({value}%↗)</span>
     if (value === 0)
