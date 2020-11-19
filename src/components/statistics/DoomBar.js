@@ -12,7 +12,7 @@ function DoomBar() {
                     <Col>
                         <h6>Etapy zasad bezpieczeństwa</h6>
                         <p className="font-weight-light">
-                            Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys mieszkańców:
+                            Średnia liczba nowych zakażeń przez ostatnie 7 dni na 100 tys. mieszkańców:
                             <b> {Math.round(newOrOld('the_average') * 1000) / 1000} {percentageDifference('the_average')}
                                 {updateWarning('the_average')}
                             </b>
