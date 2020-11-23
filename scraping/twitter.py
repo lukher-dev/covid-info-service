@@ -145,7 +145,7 @@ def parse_test_number(tests):
 
 def calculate_the_average(history):
         sum_history = sum([int(i) for i in history])
-        avg = (sum_history / 7) / 37832148 * 100000
+        avg = (sum_history / 7)
         return avg
 
 if __name__ == '__main__':

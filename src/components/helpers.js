@@ -29,72 +29,47 @@ function labelCreator(value, max) {
 }
 
 export function doomCounterValue() {
+    let steps = [3800, 9400, 19000, 27000]
+    let stepsProcessed = steps.map(x => x)
+    for (let i = 1; i < steps.length; i++) {
+        stepsProcessed[i] = steps[i] - steps[i - 1]
+    }
+    stepsProcessed.push(4000)
+    const max = 31000 / 100
+
     var avg = newOrOld('the_average')
-    const max = 80 / 100
     const doomCounterValues = []
     const doomCounterlabels = []
-    if (avg < 10) {
-        doomCounterValues.push(avg / max)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-
-        doomCounterlabels.push(labelCreator(avg, 10))
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-    } else if (avg < 25) {
-        doomCounterValues.push(10 / max)
-        doomCounterValues.push((avg - 10) / max)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-
-        doomCounterlabels.push('')
-        doomCounterlabels.push(labelCreator(avg, 25))
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-    } else if (avg < 50) {
-        doomCounterValues.push(10 / max)
-        doomCounterValues.push(15 / max)
-        doomCounterValues.push((avg - 25) / max)
-        doomCounterValues.push(0)
-        doomCounterValues.push(0)
-
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push(labelCreator(avg, 50))
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-    } else if (avg < 70) {
-        doomCounterValues.push(10 / max)
-        doomCounterValues.push(15 / max)
-        doomCounterValues.push(25 / max)
-        doomCounterValues.push((avg - 50) / max)
-        doomCounterValues.push(0)
-
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push(labelCreator(avg, 70))
-        doomCounterlabels.push('')
-    } else {
-        doomCounterValues.push(10 / max)
-        doomCounterValues.push(15 / max)
-        doomCounterValues.push(25 / max)
-        doomCounterValues.push(20 / max)
-        doomCounterValues.push((avg - 70) / max)
-
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push('')
-        doomCounterlabels.push(labelCreator(avg))
+    for (let i = 0; i < 5; i++) {
+        if (avg < steps[i] || i >= steps.length) {
+            for (let j = 0; j < 5; j++) {
+                if (j < i) {
+                    doomCounterValues.push(stepsProcessed[j] / max)
+                    doomCounterlabels.push('')
+                }
+                if (j == i) {
+                    if (i >= steps.length) {
+                        doomCounterValues.push((avg - steps[i - 1]) / max)
+                        doomCounterlabels.push(labelCreator(avg))
+                        break
+                    }
+                    if (i == 0) {
+                        doomCounterValues.push(avg / max)
+                        doomCounterlabels.push(labelCreator(avg))
+                        break
+                    }
+                    doomCounterValues.push((avg - steps[j - 1]) / max)
+                    doomCounterlabels.push(labelCreator(avg, steps[j]))
+                }
+                if (j > i) {
+                    doomCounterValues.push(0)
+                    doomCounterlabels.push('')
+                }
+            }
+            break
+        }
     }
-    return [doomCounterValues, doomCounterlabels, avg]
+    return [steps, stepsProcessed, max, doomCounterValues, doomCounterlabels, avg]
 }
 
 export function insertThinSpace(number) {
