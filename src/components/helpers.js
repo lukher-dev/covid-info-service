@@ -47,13 +47,13 @@ export function doomCounterValue() {
                     doomCounterValues.push(stepsProcessed[j] / max)
                     doomCounterlabels.push('')
                 }
-                if (j == i) {
+                if (j === i) {
                     if (i >= steps.length) {
                         doomCounterValues.push((avg - steps[i - 1]) / max)
                         doomCounterlabels.push(labelCreator(avg))
                         break
                     }
-                    if (i == 0) {
+                    if (i === 0) {
                         doomCounterValues.push(avg / max)
                         doomCounterlabels.push(labelCreator(avg))
                         break
