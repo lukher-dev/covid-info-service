@@ -56,6 +56,18 @@
         "title": "Gospodarka",
         "restrictions": [
             {
+                "content": "Zamknięcie hoteli"
+            },
+            {
+                "content": "Zamknięcie stoków narciarskich"
+            },
+            {
+                "content": "Zamknięcie sklepów w galeriach handlowych (i sklepów o powierzchni ponad 2000 m kw.) z wyjątkiem sklepów z artykułami:",
+                "details": [
+                    "spożywczymi, kosmetycznymi, środkami czystości, wyrobami medycznymi, remontowo-budowlanymi, dla zwierząt, prasą oraz lokali z usługami"
+                ]
+            },
+            {
                 "content": "Limit klientów w sklepach, na targu i poczcie",
                 "details": [
                     "do 100 m kw. - 1os / 10 m kw.",
@@ -76,11 +88,7 @@
                 ]
             },
             {
-                "content": "Zawieszona działalność basenów, aquaparków, siłowni i centrów fitness",
-                "details": [
-                    "nie dotyczy zajęć dla uczniów i studentów",
-                    "nie dotyczy hoteli (tylko dla gości powyżej jednej doby)"
-                ]
+                "content": "Zawieszona działalność basenów, aquaparków, siłowni i centrów fitness"
             },
             {
                 "content": "Zawieszona działalność placówek kultury",
@@ -90,12 +98,6 @@
             },
             {
                 "content": "W kościołach maksymalnie 1os / 15 m kw."
-            },
-            {
-                "content": "Hotele tylko dla gości służbowych"
-            },
-            {
-                "content": "Wydarzenia sportowe bez udziału publiczonści"
             }
         ]
     }
