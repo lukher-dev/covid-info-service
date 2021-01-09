@@ -43,6 +43,9 @@ data = {
         'casesHistory': cases_history
 }
 
+def get_image_ocr_text(image_url):
+        # TODO: Fetch from pytesseract
+        return ''
 
 def extract_info_from_tweet(tweet):
         global data
@@ -109,6 +112,16 @@ def extract_info_from_tweet(tweet):
                         'ci.gu doby wykonano ponad (.+) test.w', text)
                 if match and not curent_data['tests_done_today']:
                         curent_data['tests_done_today'] = match.groups()[0]
+
+
+                # TODO: Implement reading vaccination data
+                # match = re.search('Dzienny raport #SzczepimySi.', text)
+                # if match:
+                #         try:
+                #                 print(tweet.extended_entities['media'][0]['media_url'])
+                #                 get_image_ocr_text(tweet.extended_entities['media'][0]['media_url'])
+                #         except:
+                #                 pass
 
                 # match = re.findall(
                 #         '(\\S+ie)go .([ \\d]+).', text)
