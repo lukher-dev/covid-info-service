@@ -10,7 +10,7 @@ function DoomBar() {
             <Container className="text-center pt-2" >
                 <Row>
                     <Col>
-                        <h6>Etapy zasad bezpieczeństwa</h6>
+                        <h4>Etapy zasad bezpieczeństwa</h4>
                         <p className="font-weight-light">
                             Średnia liczba nowych zakażeń przez ostatnie 7 dni:
                             <b> {Math.round(newOrOld('the_average'))} {percentageDifference('the_average')}

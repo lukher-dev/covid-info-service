@@ -37,7 +37,7 @@ function Vaccines() {
                             <h4 className='m-0'>{data.DAWKA_2_SUMA}</h4>
                         </Col>
                         <Col md={{ span: 4, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
-                        <h6>Szczepienia dziennie:</h6>
+                        <h6>Szczepienia w ciągu ostatniej doby:</h6>
                             <h4 className='m-0'>{data.SZCZEPIENIA_DZIENNIE}</h4>
                         </Col>
                     </Row>
