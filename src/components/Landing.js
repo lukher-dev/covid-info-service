@@ -8,14 +8,20 @@ import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from '
 import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
 import DoomBar from './statistics/DoomBar'
+import Vaccines from './Vaccines'
 
 function Landing() {
     useEffect(() => {
         ReactGA.pageview(window.location.pathname + window.location.search);
     });
+
     return (
         <div>
+            <Vaccines/>
             <Jumbotron className='p-0 m-2' >
+                <div className="text-center">
+                <h2>Zachorowania</h2>
+                </div>
                 <Container className="text-center pt-2" >
                     <Row>
                         <Col>
