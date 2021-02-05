@@ -1,17 +1,13 @@
-import { Nav, Navbar } from 'react-bootstrap'
-import {
-    Link
-} from "react-router-dom";
+import { Navbar } from 'react-bootstrap'
 
 function TopBar() {
     return (
         <Navbar bg="primary" variant="dark" >
             <Navbar.Brand href="/">info-covid.pl</Navbar.Brand>
-            <Nav className="w-100 justify-content-end">
+            {/* <Nav className="w-100 justify-content-end">
                 <Link className="nav-link" to="/">Statystyki</Link>
                 <Link className="nav-link" to="/restrictions">Obostrzenia</Link>
-                {/* <Link className="nav-link" to="/statistics">Statystyki</Link> */}
-            </Nav>
+            </Nav> */}
         </Navbar>
     );
 }

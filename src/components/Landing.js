@@ -1,8 +1,5 @@
 import ReactGA from 'react-ga';
-import { Jumbotron, Container, Row, Col, Button, ProgressBar } from 'react-bootstrap'
-import {
-    Link
-} from "react-router-dom";
+import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import lastUpdateDate from '../data/lastUpdateDate.json'
 import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from './helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
@@ -102,7 +99,7 @@ function Landing() {
                 </Container>
             </Jumbotron>
             <DoomBar />
-            <Jumbotron className='p-0 m-2' >
+            {/* <Jumbotron className='p-0 m-2' >
                 <Container>
                     <Row className="text-center">
                         <Col>
@@ -115,7 +112,7 @@ function Landing() {
                         </Col>
                     </Row>
                 </Container>
-            </Jumbotron>
+            </Jumbotron> */}
         </div >
     );
 }

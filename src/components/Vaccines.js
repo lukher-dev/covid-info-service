@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
+import { insertThinSpace } from './helpers'
 
 function Vaccines() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get("https://services9.arcgis.com/RykcEgwHWuMsJXPj/arcgis/rest/services/global_szczepienia_widok/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard", {
+        axios.get("https://services9.arcgis.com/RykcEgwHWuMsJXPj/arcgis/rest/services/global_szczepienia_widok3/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard", {
         }).then(response => {
           setData(response.data.features[0].attributes)
         })
@@ -30,15 +31,15 @@ function Vaccines() {
                     <Row>
                         <Col md={{ span: 4, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
                             <h6>Szczepienia ogółem:</h6>
-                            <h4 className='m-0'>{data.SZCZEPIENIA_SUMA}</h4>
+                            <h4 className='m-0'>{insertThinSpace(data.SZCZEPIENIA_SUMA.toString())}</h4>
                         </Col>
                         <Col md={{ span: 4, order: 2 }} xs={{ span: 12, order: 3 }} className='mb-3'>
                         <h6>Drugie dawki ogółem:</h6>
-                            <h4 className='m-0'>{data.DAWKA_2_SUMA}</h4>
+                            <h4 className='m-0'>{insertThinSpace(data.DAWKA_2_SUMA.toString())}</h4>
                         </Col>
                         <Col md={{ span: 4, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
                         <h6>Szczepienia w ciągu ostatniej doby:</h6>
-                            <h4 className='m-0'>{data.SZCZEPIENIA_DZIENNIE}</h4>
+                            <h4 className='m-0'>{insertThinSpace(data.SZCZEPIENIA_DZIENNIE.toString())}</h4>
                         </Col>
                     </Row>
                     <Row>
