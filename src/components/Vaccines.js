@@ -7,7 +7,7 @@ function Vaccines() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get("https://services9.arcgis.com/RykcEgwHWuMsJXPj/arcgis/rest/services/global_szczepienia_widok3/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard", {
+        axios.get("https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_widok3/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outSR=102100&resultOffset=0&resultRecordCount=1&resultType=standard", {
         }).then(response => {
           setData(response.data.features[0].attributes)
         })
@@ -52,10 +52,10 @@ function Vaccines() {
                         <Col>
                         <ProgressBar className='doom-bar mt-2'>
                             <ProgressBar className="color-green" animated now={data.DAWKA_2_SUMA/38508081 * 100} />
-                            <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-data.DAWKA_2_SUMA)/38508081 * 100} />
+                            <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/38508081 * 100} />
                         </ProgressBar>
                         <ProgressBar className='doom-light-bar'>
-                            <ProgressBar className="color-light" now={100} label={Math.ceil(data.DAWKA_2_SUMA/38508081 * 10000)/100 + '%'} />
+                            <ProgressBar className="color-light" now={100} label={Math.ceil(data.DAWKA_2_SUMA/38508081 * 10000)/100 + '% (za 21 dni przewidujemy około ' + Math.ceil((data.SZCZEPIENIA_SUMA-(data.DAWKA_2_SUMA))/38508081 * 10000)/100 + '%)'} />
                         </ProgressBar>
                         </Col>
                     </Row>
