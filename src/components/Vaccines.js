@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import { insertThinSpace } from './helpers'
 
+const adultPopulation = 32_495_000;
+
 function Vaccines() {
     const [data, setData] = useState(null);
 
@@ -51,11 +53,11 @@ function Vaccines() {
                     <Row>
                         <Col>
                         <ProgressBar className='doom-bar mt-2'>
-                            <ProgressBar className="color-green" animated now={data.DAWKA_2_SUMA/38508081 * 100} />
-                            <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/38508081 * 100} />
+                            <ProgressBar className="color-green" animated now={data.DAWKA_2_SUMA/adultPopulation * 100} />
+                            <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/adultPopulation * 100} />
                         </ProgressBar>
-                        <ProgressBar className='doom-light-bar'>
-                            <ProgressBar className="color-light" now={100} label={Math.ceil(data.DAWKA_2_SUMA/38508081 * 10000)/100 + '% (za 21 dni przewidujemy około ' + Math.ceil((data.SZCZEPIENIA_SUMA-(data.DAWKA_2_SUMA))/38508081 * 10000)/100 + '%)'} />
+                        <ProgressBar className='doom-light-bar black-font'>
+                            <ProgressBar className="color-light" now={100} label={Math.ceil(data.DAWKA_2_SUMA/adultPopulation * 10000)/100 + '% (za 21 dni przewidujemy około ' + Math.ceil((data.SZCZEPIENIA_SUMA-(data.DAWKA_2_SUMA))/adultPopulation * 10000)/100 + '%)'} />
                         </ProgressBar>
                         </Col>
                     </Row>
