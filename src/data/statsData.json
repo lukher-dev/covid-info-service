@@ -1,0 +1,50 @@
+{
+  "casesHistory": [
+    "6170",
+    "13574",
+    "14857",
+    "15829",
+    "15250",
+    "15698",
+    "7937",
+    "4786"
+  ],
+  "today": {
+    "active_cases": "261683",
+    "bed_count": "26900",
+    "cases_global": "1801083",
+    "dead_all_today": "32",
+    "dead_covid_today": "4",
+    "dead_global": "45317",
+    "dead_intercurrent_today": "28",
+    "healed_count": "1494083",
+    "new_cases_today": "6170",
+    "occupied_bed_count": "17337",
+    "occupied_respirator_count": "1838",
+    "per_voivodeship": {},
+    "percent_positive": "19,90 %",
+    "percent_positive_value": 19.903225806451612,
+    "respirator_count": "2642",
+    "tests_done_today": "31 tys.",
+    "the_average": 12759.285714285714
+  },
+  "yesterday": {
+    "active_cases": "267061",
+    "bed_count": "26895",
+    "cases_global": "1794914",
+    "dead_all_today": "126",
+    "dead_covid_today": "25",
+    "dead_global": "45285",
+    "dead_intercurrent_today": "101",
+    "healed_count": "1482568",
+    "new_cases_today": "13574",
+    "occupied_bed_count": "16861",
+    "occupied_respirator_count": "1769",
+    "per_voivodeship": {},
+    "percent_positive": "27,20 %",
+    "percent_positive_value": 27.20240480961924,
+    "respirator_count": "2641",
+    "tests_done_today": "49,9 tys.",
+    "the_average": 12561.57142857143
+  }
+}
