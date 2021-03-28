@@ -1,16 +1,16 @@
-import TopBar from './components/TopBar'
-import Restrictions from './components/restrictions/Restrictions'
-import Landing from './components/Landing'
+import TopBar from './TopBar'
+import Restrictions from './restrictions/Restrictions'
+import Landing from './statistics/Landing'
 import {
   HashRouter,
   Switch,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
 
-function App() {
+function Root() {
 
   return (
-    <HashRouter basename="/">
+    <HashRouter basename='/'>
       <TopBar />
       <Switch>
         <Route path={process.env.PUBLIC_URL + '/restrictions'}>
@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-export default App;
+export default Root;

@@ -55,7 +55,7 @@ $light: #f0f0f5;
   font-weight: 700;
 }
 
-.doom-bar{
+.bar{
   margin-top:40px;
   height: 50px;
 }
@@ -80,12 +80,12 @@ $light: #f0f0f5;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.doom-light-bar{
+.light-bar{
   margin-top: -50px;
   height: 50px;
 }
 
-.doom-light-bar .progress-bar div{
+.light-bar .progress-bar div{
   z-index: 2;
 }
 
@@ -94,7 +94,7 @@ $light: #f0f0f5;
   background: rgba(0,0,0,0);
 }
 
-.doom-bar-label{
+.bar-label{
   border-width: 1px;
   border-right-style: dashed ;
 }
