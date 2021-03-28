@@ -81,13 +81,17 @@ $light: #f0f0f5;
 }
 
 .doom-light-bar{
-  background-color: white;
   margin-top: -50px;
   height: 50px;
 }
 
 .doom-light-bar .progress-bar div{
   z-index: 2;
+}
+
+.percentage-label{
+  z-index: 1;
+  background: rgba(0,0,0,0);
 }
 
 .doom-bar-label{

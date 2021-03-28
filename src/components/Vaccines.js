@@ -17,6 +17,8 @@ function Vaccines() {
 
     if(!data)
         return null
+    const percentageToday = Math.ceil((data.DAWKA_2_SUMA / adultPopulation) * 10000) / 100
+    const percentageFuture = Math.ceil(((data.SZCZEPIENIA_SUMA - data.DAWKA_2_SUMA) / adultPopulation) * 10000) / 100
     return (
         <div>
             <Jumbotron className='p-0 m-2' >
@@ -57,7 +59,7 @@ function Vaccines() {
                             <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/adultPopulation * 100} />
                         </ProgressBar>
                         <ProgressBar className='doom-light-bar black-font'>
-                            <ProgressBar className="color-light" now={100} label={Math.ceil(data.DAWKA_2_SUMA/adultPopulation * 10000)/100 + '% (za 21 dni przewidujemy około ' + Math.ceil((data.SZCZEPIENIA_SUMA-(data.DAWKA_2_SUMA))/adultPopulation * 10000)/100 + '%)'} />
+                            <ProgressBar className="color-light percentage-label" now={100} label={`${percentageToday}% (za 21 dni przewidujemy około ${percentageFuture}%)`} />
                         </ProgressBar>
                         </Col>
                     </Row>
