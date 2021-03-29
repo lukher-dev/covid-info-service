@@ -63,7 +63,6 @@ function DoomBar() {
                         <hr className='m-2' />
                         <small>Więcej informacji o etapach zasad bezpieczeństwa:</small>
                         <p><a href='https://twitter.com/PremierRP/status/1330078274987450369/photo/1'>{<FaTwitterSquare size={20} />}Kancelaria Premiera</a></p>
-
                     </Col>
                 </Row>
             </Container>

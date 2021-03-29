@@ -1,77 +1,48 @@
 import statsData from '../data/statsData.json'
 
 export function newOrOld(field) {
-    return statsData['today'][field] ? statsData['today'][field] : statsData['yesterday'][field]
+  return statsData['today'][field] || statsData['yesterday'][field]
 }
 
 export function updateWarning(field) {
-    if (!statsData['today'][field]) {
-        return <span className='adnotation text-danger m-0'>(Wczorajsza wartość)</span>
-    }
+  return !statsData['today'][field] ? <span className='adnotation text-danger m-0'>(Wczorajsza wartość)</span> : <></>
 }
 
 export function percentageDifference(field) {
-    if (!statsData['today'][field]) {
-        return null
-    }
-    const value = Math.ceil(((statsData['today'][field] / statsData['yesterday'][field]) - 1) * 10000) / 100
-    if (value > 0)
-        return <span className='adnotation text-danger'>({value}%↗)</span>
-    if (value === 0)
-        return <span className='adnotation text-secondary'>(-%)</span>
-    return <span className='adnotation text-success'>({value}%↘)</span>
+  if (!!statsData['today'][field]) {
+    const value = Math.ceil((statsData['today'][field] / statsData['yesterday'][field] - 1) * 10000) / 100
+    const { nameOfClass, content } =
+      value > 0
+        ? { nameOfClass: 'adnotation text-danger', content: `(${value}%↗)` }
+        : value === 0
+        ? { nameOfClass: 'adnotation text-secondary', content: '(-%)' }
+        : { nameOfClass: 'adnotation text-success', content: `(${value}%↘)` }
+    return <span className={nameOfClass}>{content}</span>
+  } else {
+    return <></>
+  }
 }
 
 function labelCreator(value, max) {
-    if (max)
-        return <div>{Math.floor(Math.min(value, max)).toString() + '/' + max.toString()}</div>
-    return <div>{value.toString()}</div>
+  return <div>{max ? Math.floor(Math.min(value, max)).toString() + '/' + max.toString() : value.toString()}</div>
 }
 
 export function doomCounterValue() {
-    let steps = [3800, 9400, 19000, 27000]
-    let stepsProcessed = steps.map(x => x)
-    for (let i = 1; i < steps.length; i++) {
-        stepsProcessed[i] = steps[i] - steps[i - 1]
-    }
-    stepsProcessed.push(4000)
-    const max = 31000 / 100
+  const steps = [3800, 9400, 19000, 27000]
+  const stepsProcessed = [steps[0], ...[...Array(steps.length - 1).keys()].map((i) => steps[i + 1] - steps[i]), 4000]
+  const max = 31000 / 100
 
-    var avg = newOrOld('the_average')
-    const doomCounterValues = []
-    const doomCounterlabels = []
-    for (let i = 0; i < 5; i++) {
-        if (avg < steps[i] || i >= steps.length) {
-            for (let j = 0; j < 5; j++) {
-                if (j < i) {
-                    doomCounterValues.push(stepsProcessed[j] / max)
-                    doomCounterlabels.push('')
-                }
-                if (j === i) {
-                    if (i >= steps.length) {
-                        doomCounterValues.push((avg - steps[i - 1]) / max)
-                        doomCounterlabels.push(labelCreator(avg))
-                        break
-                    }
-                    if (i === 0) {
-                        doomCounterValues.push(avg / max)
-                        doomCounterlabels.push(labelCreator(avg))
-                        break
-                    }
-                    doomCounterValues.push((avg - steps[j - 1]) / max)
-                    doomCounterlabels.push(labelCreator(avg, steps[j]))
-                }
-                if (j > i) {
-                    doomCounterValues.push(0)
-                    doomCounterlabels.push('')
-                }
-            }
-            break
-        }
-    }
-    return [steps, stepsProcessed, max, doomCounterValues, doomCounterlabels, avg]
+  const avg = newOrOld('the_average')
+  const indexOfLabeledPart = steps.findIndex((x) => x > avg)
+  const doomCounterValues = stepsProcessed.map(
+    (x, i) => (i < indexOfLabeledPart ? x : i === indexOfLabeledPart ? avg - steps[indexOfLabeledPart - 1] : 0) / max,
+  )
+  const doomCounterlabels = stepsProcessed.map((_, i) =>
+    i === indexOfLabeledPart ? labelCreator(avg, i > 0 ? steps[i] : null) : '',
+  )
+  return [steps, stepsProcessed, max, doomCounterValues, doomCounterlabels, avg]
 }
 
 export function insertThinSpace(number) {
-    return number.replace(/\B(?=(\d{3})+(?!\d))/g, "\u2009");
+  return number.replace(/\B(?=(\d{3})+(?!\d))/g, '\u2009')
 }
