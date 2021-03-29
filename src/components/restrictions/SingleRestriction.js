@@ -5,7 +5,7 @@ function SingleRestriction(props) {
             {props.details &&
                 <ul>
                     {props.details.map(detail => {
-                        return <li key={detail} className="font-weight-light">{<small>{detail}</small>}</li>
+                        return <li key={detail} className='font-weight-light'>{<small>{detail}</small>}</li>
                     })}
                 </ul>
             }

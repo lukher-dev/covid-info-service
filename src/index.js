@@ -2,14 +2,14 @@ import ReactGA from 'react-ga';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+import Root from './components/Root';
 import reportWebVitals from './reportWebVitals';
 
 ReactGA.initialize('G-5J0BQEKJX3');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Root />
   </React.StrictMode>,
   document.getElementById('root')
 );

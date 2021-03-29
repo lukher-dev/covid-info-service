@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
-import { insertThinSpace } from './helpers'
+import { insertThinSpace } from '../helpers'
 
 const adultPopulation = 32_495_000;
 
@@ -9,7 +9,7 @@ function Vaccines() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        axios.get("https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_widok2/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard", {
+        axios.get('https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_widok2/FeatureServer/0/query?f=json&where=Data%20BETWEEN%20(CURRENT_TIMESTAMP%20-%20INTERVAL%20%2724%27%20HOUR)%20AND%20CURRENT_TIMESTAMP&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard', {
         }).then(response => {
           setData(response.data.features[0].attributes)
         })
@@ -22,10 +22,10 @@ function Vaccines() {
     return (
         <div>
             <Jumbotron className='p-0 m-2' >
-                <div className="text-center">
+                <div className='text-center'>
                 <h2>Szczepienia</h2>
                 </div>
-                <Container className="text-center pt-2" >
+                <Container className='text-center pt-2' >
                 <Row>
                         <Col>
                             <p className='m-0'>Ostatnia aktualizacja: {data.DATA_SHOW}</p>
@@ -54,21 +54,21 @@ function Vaccines() {
                     </Row>
                     <Row>
                         <Col>
-                        <ProgressBar className='doom-bar mt-2'>
-                            <ProgressBar className="color-green" animated now={data.DAWKA_2_SUMA/adultPopulation * 100} />
-                            <ProgressBar className="color-yellow" now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/adultPopulation * 100} />
+                        <ProgressBar className='bar mt-2'>
+                            <ProgressBar className='color-green' animated now={data.DAWKA_2_SUMA/adultPopulation * 100} />
+                            <ProgressBar className='color-yellow' now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/adultPopulation * 100} />
                         </ProgressBar>
-                        <ProgressBar className='doom-light-bar black-font'>
-                            <ProgressBar className="color-light percentage-label" now={100} label={`${percentageToday}% (za 21 dni przewidujemy około ${percentageFuture}%)`} />
+                        <ProgressBar className='light-bar black-font'>
+                            <ProgressBar className='color-light percentage-label' now={100} label={`${percentageToday}% (za 21 dni przewidujemy około ${percentageFuture}%)`} />
                         </ProgressBar>
                         </Col>
                     </Row>
                     <Row>
                     <Col>
-                        <small><span className="color-green">Kolor zielony</span> - część populacji zaszczepiona pierwszą oraz drugą dawką (tej wartości dotyczy procent)</small>
+                        <small><span className='color-green'>Kolor zielony</span> - część populacji zaszczepiona pierwszą oraz drugą dawką (tej wartości dotyczy procent)</small>
                         </Col>
                         <Col>
-                        <small><span className="color-yellow">Kolor żółty</span> - część populacji, która otrzymała tylko pierwszą dawkę</small>
+                        <small><span className='color-yellow'>Kolor żółty</span> - część populacji, która otrzymała tylko pierwszą dawkę</small>
                         </Col>
                     </Row>
                     <Row>

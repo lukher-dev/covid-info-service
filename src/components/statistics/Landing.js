@@ -1,10 +1,10 @@
 import ReactGA from 'react-ga';
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
-import lastUpdateDate from '../data/lastUpdateDate.json'
-import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from './helpers'
+import lastUpdateDate from '../../data/lastUpdateDate.json'
+import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from '../helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
 import { useEffect } from 'react';
-import DoomBar from './statistics/DoomBar'
+import DoomBar from './DoomBar'
 import Vaccines from './Vaccines'
 
 function Landing() {
@@ -16,10 +16,10 @@ function Landing() {
         <div>
             <Vaccines/>
             <Jumbotron className='p-0 m-2' >
-                <div className="text-center">
+                <div className='text-center'>
                 <h2>Zachorowania</h2>
                 </div>
-                <Container className="text-center pt-2" >
+                <Container className='text-center pt-2' >
                     <Row>
                         <Col>
                             <p className='m-0'>Ostatnia aktualizacja: {lastUpdateDate.lastCases}</p>
@@ -66,7 +66,7 @@ function Landing() {
                         <Col lg={{ span: 3, order: 2 }} md={{ span: 6, order: 3 }} xs={{ span: 6, order: 3 }}>
                             <h6>Zajęte respiratory:</h6>
                             <h5>{insertThinSpace(newOrOld('occupied_respirator_count'))}/{insertThinSpace(newOrOld('respirator_count'))}</h5>
-                            <ProgressBar variant="danger" animated
+                            <ProgressBar variant='danger' animated
                                 now={newOrOld('occupied_respirator_count') / newOrOld('respirator_count') * 100}
                                 label={String(Math.floor(newOrOld('occupied_respirator_count') / newOrOld('respirator_count') * 100)) + '%'} />
                             {updateWarning('occupied_respirator_count')}
@@ -74,7 +74,7 @@ function Landing() {
                         <Col lg={{ span: 3, order: 3 }} md={{ span: 6, order: 4 }} xs={{ span: 6, order: 4 }}>
                             <h6>Zajęte łóżka:</h6>
                             <h5>{insertThinSpace(newOrOld('occupied_bed_count'))}/{insertThinSpace(newOrOld('bed_count'))}</h5>
-                            <ProgressBar variant="danger" animated
+                            <ProgressBar variant='danger' animated
                                 now={newOrOld('occupied_bed_count') / newOrOld('bed_count') * 100}
                                 label={String(Math.floor(newOrOld('occupied_bed_count') / newOrOld('bed_count') * 100)) + '%'} />
                             {updateWarning('occupied_bed_count')}
@@ -101,14 +101,14 @@ function Landing() {
             <DoomBar />
             {/* <Jumbotron className='p-0 m-2' >
                 <Container>
-                    <Row className="text-center">
+                    <Row className='text-center'>
                         <Col>
                             <p className='m-0'>Aktualnie obowiązujące obostrzenia z dnia: {lastUpdateDate.lastRestrictions}</p>
                         </Col>
                     </Row>
                     <Row className='m-0'>
                         <Col className='p-0 m-2'>
-                            <Button className='restrictions-button p-0' block><Link to="/restrictions"><p className='m-2 text-white'>Zobacz obostrzenia</p></Link></Button>
+                            <Button className='restrictions-button p-0' block><Link to='/restrictions'><p className='m-2 text-white'>Zobacz obostrzenia</p></Link></Button>
                         </Col>
                     </Row>
                 </Container>
