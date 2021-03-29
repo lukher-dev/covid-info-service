@@ -24,7 +24,13 @@ export function percentageDifference(field) {
 }
 
 function labelCreator(value, max) {
-  return <div>{max ? Math.floor(Math.min(value, max)).toString() + '/' + max.toString() : value.toString()}</div>
+  return (
+    <div>
+      {max
+        ? Math.floor(Math.min(value, max)).toString() + "/" + max.toString()
+        : (Math.ceil(value * 100) / 100).toString()}
+    </div>
+  );
 }
 
 export function doomCounterValue() {
@@ -33,9 +39,9 @@ export function doomCounterValue() {
   const max = 31000 / 100
 
   const avg = newOrOld('the_average')
-  const indexOfLabeledPart = steps.findIndex((x) => x > avg)
+  const indexOfLabeledPart = avg < steps[steps.length-1] ? steps.findIndex((x) => x > avg) : steps.length
   const doomCounterValues = stepsProcessed.map(
-    (x, i) => (i < indexOfLabeledPart ? x : i === indexOfLabeledPart ? avg - steps[indexOfLabeledPart - 1] : 0) / max,
+    (x, i) => (i < indexOfLabeledPart ? x : i === indexOfLabeledPart ? indexOfLabeledPart === 0 ? avg : avg - steps[indexOfLabeledPart - 1] : 0) / max,
   )
   const doomCounterlabels = stepsProcessed.map((_, i) =>
     i === indexOfLabeledPart ? labelCreator(avg, i > 0 ? steps[i] : null) : '',
