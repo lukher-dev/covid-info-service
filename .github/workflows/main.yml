@@ -4,9 +4,9 @@ on:
   push:
     branches: [master]
   schedule:
-    - cron: "32 9 * * *"
-    - cron: "47 9 * * *"
-    - cron: "00 10 * * *" # A deployment at 11:00 in case MZ is late with data
+    - cron: "32 8 * * *"
+    - cron: "47 8 * * *"
+    - cron: "00 9 * * *" # A deployment at 11:00 in case MZ is late with data
 
 jobs:
   build:
