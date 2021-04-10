@@ -34,6 +34,15 @@ jobs:
         with:
           python-version: 3.8
 
+      - name: Download historic data
+        run: |
+          sudo apt install unzip
+          cd ./scraping
+          wget https://arcgis.com/sharing/rest/content/items/a8c562ead9c54e13a135b02e0d875ffb/data
+          mkdir historic
+          unzip data -d historic
+          rm data
+
       - name: Data scraping
         run: |
           cd ./scraping
