@@ -34,21 +34,13 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Download historic data
-        run: |
-          sudo apt install unzip
-          cd ./scraping
-          wget https://arcgis.com/sharing/rest/content/items/a8c562ead9c54e13a135b02e0d875ffb/data
-          mkdir historic
-          unzip data -d historic
-          rm data
-
       - name: Data scraping
         run: |
           cd ./scraping
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python add_new_data.py
           python twitter.py ${{secrets.CONSUMER_KEY}} ${{secrets.CONSUMER_SECRET}} ${{secrets.ACCESS_KEY}} ${{secrets.ACCESS_SECRET}} > ../src/data/statsData.json
           cat ../src/data/statsData.json
 
