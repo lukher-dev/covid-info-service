@@ -1,9 +1,9 @@
+import React, { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import lastUpdateDate from '../../data/lastUpdateDate.json'
 import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from '../helpers'
 import { FaTwitterSquare } from 'react-icons/fa';
-import { useEffect } from 'react';
 import DoomBar from './DoomBar'
 import Vaccines from './Vaccines'
 

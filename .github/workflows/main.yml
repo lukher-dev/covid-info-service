@@ -40,6 +40,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python add_new_data.py
           python twitter.py ${{secrets.CONSUMER_KEY}} ${{secrets.CONSUMER_SECRET}} ${{secrets.ACCESS_KEY}} ${{secrets.ACCESS_SECRET}} > ../src/data/statsData.json
           cat ../src/data/statsData.json
 
