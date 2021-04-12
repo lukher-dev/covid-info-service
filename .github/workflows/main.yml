@@ -44,6 +44,13 @@ jobs:
           python twitter.py ${{secrets.CONSUMER_KEY}} ${{secrets.CONSUMER_SECRET}} ${{secrets.ACCESS_KEY}} ${{secrets.ACCESS_SECRET}} > ../src/data/statsData.json
           cat ../src/data/statsData.json
 
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: Scaper
+          message: 'Data scrapped!'
+          add: './src/data/historicData.json'
+
       - name: Update lastUpdateDate.json
         run: |
           sudo apt-get install jq
