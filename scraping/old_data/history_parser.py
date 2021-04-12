@@ -1,13 +1,11 @@
 import csv
 import json
 import os
-import time
-import datetime
 
 aktualne_dane = {
-    'LICZBA_ZAKAZEN': 2552898,
-    'LICZBA_ZGONOW': 58176,
-    'WSZYSCY_OZDROWIENCY': 2143065
+    'LICZBA_ZAKAZEN': 2586647,
+    'LICZBA_ZGONOW': 58481,
+    'WSZYSCY_OZDROWIENCY': 2197782
 }
 
 
@@ -49,48 +47,13 @@ if __name__ == '__main__':
         data[-1]['date'] = date[6:8] + '.' + date[4:6] + '.' + date[0:4] + ' 10:30'
         parsed.append({})
 
-    parsed.pop()
 
-    for i in range(len(data) - 2, -1, -1):
+    for i in range(len(data) - 1, -1, -1):
+        print(data[i]['date'])
         # data[-1]['date'] = date[0:4]+'-'+date[4:6]+'-'+date[6:8] + ' ' + date[8:10] + ':' + date[10:12] + ':' + date[12:14]
 
         parsed[i]['DATA_SHOW'] = data[i]['date']
         parsed[i]['KWARANTANNA'] = int(data[i]['liczba_osob_objetych_kwarantanna'])
-
-        if (i == len(data) - 2):
-            parsed[i]['LICZBA_ZAKAZEN'] = aktualne_dane['LICZBA_ZAKAZEN'] - int(data[i]["liczba_przypadkow"])
-        else:
-            parsed[i]['LICZBA_ZAKAZEN'] = parsed[i + 1]['LICZBA_ZAKAZEN'] - int(data[i]["liczba_przypadkow"])
-
-        if (i == len(data) - 2):
-            parsed[i]['LICZBA_ZGONOW'] = aktualne_dane['LICZBA_ZGONOW'] - int(data[i]["zgony"])
-        else:
-            parsed[i]['LICZBA_ZGONOW'] = parsed[i + 1]['LICZBA_ZGONOW'] - int(data[i]["zgony"])
-
-        if (int(parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[0]) <= 24 and int(
-                parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[1]) <= 12 or int(
-                parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[1]) <= 11) and int(
-                parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[2]) <= 2020:
-            parsed[i]['LICZBA_OZDROWIENCOW'] = '-'
-            parsed[i]['WSZYSCY_OZDROWIENCY'] = '-'
-            parsed[i]['AKTUALNE_ZAKAZENIA'] = '-'
-        else:
-            parsed[i]['LICZBA_OZDROWIENCOW'] = int(data[i]['liczba_ozdrowiencow'])
-
-            if (i == len(data) - 2):
-                parsed[i]['WSZYSCY_OZDROWIENCY'] = aktualne_dane['WSZYSCY_OZDROWIENCY'] - int(
-                    data[i]["liczba_ozdrowiencow"])
-            else:
-                parsed[i]['WSZYSCY_OZDROWIENCY'] = parsed[i + 1]['WSZYSCY_OZDROWIENCY'] - int(
-                    data[i]["liczba_ozdrowiencow"])
-
-            if (i == len(data) - 2):
-                parsed[i]['AKTUALNE_ZAKAZENIA'] = int(parsed[i]["LICZBA_ZAKAZEN"]) - int(
-                    parsed[i]["LICZBA_ZGONOW"]) - int(parsed[i]["WSZYSCY_OZDROWIENCY"])
-            else:
-                parsed[i]['AKTUALNE_ZAKAZENIA'] = parsed[i + 1]['AKTUALNE_ZAKAZENIA'] - int(
-                    parsed[i]["LICZBA_ZGONOW"]) - int(parsed[i]["WSZYSCY_OZDROWIENCY"])
-
         parsed[i]['TESTY'] = int(data[i]['liczba_wykonanych_testow'])
         parsed[i]['TESTY_POZYTYWNE'] = int(data[i]['liczba_testow_z_wynikiem_pozytywnym'])
 
@@ -99,6 +62,35 @@ if __name__ == '__main__':
         parsed[i]['ZGONY_DZIENNE'] = int(data[i]['zgony'])
         parsed[i]['ZGONY_WSPOLISTNIEJACE'] = int(data[i]['zgony_w_wyniku_covid_i_chorob_wspolistniejacych'])
         parsed[i]['ZLECENIA_POZ'] = int(data[i]['liczba_zlecen_poz'])
+
+        # if (i == len(data) - 1):
+        #     parsed[i]['LICZBA_ZAKAZEN'] = aktualne_dane['LICZBA_ZAKAZEN']
+        # else:
+        #     parsed[i]['LICZBA_ZAKAZEN'] = parsed[i + 1]['LICZBA_ZAKAZEN'] - int(parsed[i + 1]["ZAKAZENIA_DZIENNE"])
+        #
+        # if (i == len(data) - 1):
+        #     parsed[i]['LICZBA_ZGONOW'] = aktualne_dane['LICZBA_ZGONOW']
+        # else:
+        #     parsed[i]['LICZBA_ZGONOW'] = parsed[i + 1]['LICZBA_ZGONOW'] - int(parsed[i + 1]["ZGONY_DZIENNE"])
+        #
+        # if (int(parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[0]) <= 24 and int(
+        #         parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[1]) <= 12 or int(
+        #         parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[1]) <= 11) and int(
+        #         parsed[i]['DATA_SHOW'].split(' ')[0].split('.')[2]) <= 2020:
+        #     parsed[i]['LICZBA_OZDROWIENCOW'] = '-'
+        #     parsed[i]['WSZYSCY_OZDROWIENCY'] = '-'
+        #     parsed[i]['AKTUALNE_ZAKAZENIA'] = '-'
+        # else:
+        #     parsed[i]['LICZBA_OZDROWIENCOW'] = int(data[i]['liczba_ozdrowiencow'])
+        #
+        #     if (i == len(data) - 1):
+        #         parsed[i]['WSZYSCY_OZDROWIENCY'] = aktualne_dane['WSZYSCY_OZDROWIENCY']
+        #     else:
+        #         parsed[i]['WSZYSCY_OZDROWIENCY'] = parsed[i + 1]['WSZYSCY_OZDROWIENCY'] - int(
+        #             parsed[i + 1]["LICZBA_OZDROWIENCOW"])
+        #
+        #     parsed[i]['AKTUALNE_ZAKAZENIA'] = int(parsed[i]["LICZBA_ZAKAZEN"]) - int(
+        #             parsed[i]["LICZBA_ZGONOW"]) - int(parsed[i]["WSZYSCY_OZDROWIENCY"])
 
     with open('../../src/data/historicData.json', 'w', encoding='utf-8') as jsonf:
         jsonf.write(json.dumps(oldData + parsed, indent=4))
