@@ -19,6 +19,11 @@ function Charts() {
       x: 0,
       y: 0
     },
+    yAxis: [{
+      title: {
+        text: 'Liczba zakażeń'
+      },
+    }],
     xAxis: {
       labels: {
         format: '{value:%b %e}'
