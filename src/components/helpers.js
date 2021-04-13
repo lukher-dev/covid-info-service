@@ -1,3 +1,4 @@
+import React from 'react'
 import statsData from '../data/statsData.json'
 
 export function newOrOld(field) {
@@ -9,14 +10,14 @@ export function updateWarning(field) {
 }
 
 export function percentageDifference(field) {
-  if (!!statsData['today'][field]) {
+  if (statsData['today'][field]) {
     const value = Math.ceil((statsData['today'][field] / statsData['yesterday'][field] - 1) * 10000) / 100
     const { nameOfClass, content } =
       value > 0
         ? { nameOfClass: 'adnotation text-danger', content: `(${value}%↗)` }
         : value === 0
-        ? { nameOfClass: 'adnotation text-secondary', content: '(-%)' }
-        : { nameOfClass: 'adnotation text-success', content: `(${value}%↘)` }
+          ? { nameOfClass: 'adnotation text-secondary', content: '(-%)' }
+          : { nameOfClass: 'adnotation text-success', content: `(${value}%↘)` }
     return <span className={nameOfClass}>{content}</span>
   } else {
     return <></>
