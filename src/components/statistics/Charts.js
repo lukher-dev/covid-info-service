@@ -8,7 +8,6 @@ import historicData from '../../data/historicData.json'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(customParseFormat)
 
-
 function Charts() {
   const options = {
     title: {
@@ -36,6 +35,13 @@ function Charts() {
         data: historicData.map((day) => [
           dayjs(day.DATA_SHOW, 'DD.MM.YYYY HH:mm').valueOf(),
           day.ZAKAZENIA_DZIENNE,
+        ]),
+      },
+      {
+        name: 'Średnia liczba zakażeń z 7 dni',
+        data: historicData.map((day, index) => [
+          dayjs(day.DATA_SHOW, 'DD.MM.YYYY HH:mm').valueOf(),
+          index < 7 ? 0 : (historicData.slice(index-7, index).map(x => x.ZAKAZENIA_DZIENNE).reduce((a, b) => a + b) / 7)
         ]),
       },
     ],
