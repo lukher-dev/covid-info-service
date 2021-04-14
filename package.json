@@ -9,6 +9,9 @@
     "@testing-library/user-event": "12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "4.5.3",
+    "dayjs": "^1.10.4",
+    "highcharts": "^9.0.1",
+    "highcharts-react-official": "^3.0.0",
     "node-sass": "4.14.1",
     "react": "17.0.1",
     "react-bootstrap": "1.4.0",
@@ -42,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2"
   }
 }

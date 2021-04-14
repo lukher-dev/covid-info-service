@@ -1,3 +1,4 @@
+import React from 'react'
 import TopBar from './TopBar'
 import Restrictions from './restrictions/Restrictions'
 import Landing from './statistics/Landing'
@@ -5,7 +6,7 @@ import {
   HashRouter,
   Switch,
   Route
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 function Root() {
 
@@ -24,7 +25,7 @@ function Root() {
         </Route>
       </Switch>
     </HashRouter>
-  );
+  )
 }
 
-export default Root;
+export default Root
