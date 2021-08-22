@@ -46,7 +46,7 @@ function Charts() {
         name: 'Średnia liczba zakażeń z 7 dni',
         data: shownData.map((day, index) => [
           dayjs(day.DATA_SHOW, 'DD.MM.YYYY HH:mm').valueOf(),
-          index < 7 ? 0 : (shownData.slice(index-7, index).map(x => x.ZAKAZENIA_DZIENNE).reduce((a, b) => a + b) / 7)
+          index < 7 ? 0 : (shownData.slice(index - 7, index).map(x => x.ZAKAZENIA_DZIENNE).reduce((a, b) => a + b) / 7)
         ]),
       },
     ],
@@ -57,26 +57,32 @@ function Charts() {
       <div className='text-center'>
         <h2>Wykres nowych zakażeń</h2>
       </div>
-      <div className='text-center'>
-        <h7>Zakres pokazywanych danych</h7>
-        {
-          [
-            [null, 'Od zarania dziejów'],
-            [365, 'Ostatni rok'],
-            [31, 'Ostatni miesciąc'],  
-            [7, 'Ostatni tydzień'],  
-          ].map(([value, label]) => (
-            <button
-              key={value}
-              className={shownLimit === value ? 'btn btn-primary' : 'btn btn-outline-primary'}
-              onClick={() => {
-                setShownLimit(value)
-              }}
-            >{label}</button>
-          ))
-        }
-      </div>
       <Container className="text-center p-4">
+        <Row>
+          <Col>
+            <div className='text-center'>
+              <h7>Zakres pokazywanych danych</h7>
+              <div className='timeline-controls'>
+                {
+                  [
+                    // [null, 'Od zarania dziejów'],
+                    [365, 'Ostatni rok'],
+                    [31, 'Ostatni miesciąc'],
+                    [7, 'Ostatni tydzień'],
+                  ].map(([value, label]) => (
+                    <button
+                      key={value}
+                      className={shownLimit === value ? 'btn btn-primary' : 'btn btn-outline-primary'}
+                      onClick={() => {
+                        setShownLimit(value)
+                      }}
+                    >{label}</button>
+                  ))
+                }
+              </div>
+            </div>
+          </Col>
+        </Row>
         <Row>
           <Col>
             <HighchartsReact highcharts={Highcharts} options={options} />
