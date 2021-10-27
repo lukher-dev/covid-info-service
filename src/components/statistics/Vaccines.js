@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import { insertThinSpace } from '../helpers'
+import { useTranslation } from 'react-i18next'
 
 const adultPopulation = 32_495_000
 
 function Vaccines() {
+  const { t } = useTranslation()
   const [data, setData] = useState(null)
 
   useEffect(() => {
@@ -24,33 +26,33 @@ function Vaccines() {
     <div>
       <Jumbotron className='p-0 m-2' >
         <div className='text-center'>
-          <h2>Szczepienia</h2>
+          <h2>{t('vaccinations')}</h2>
         </div>
         <Container className='text-center pt-2' >
           <Row>
             <Col>
-              <p className='m-0'>Ostatnia aktualizacja: {data.DATA_SHOW}</p>
+              <p className='m-0'>{t('lastUpdate')} {data.DATA_SHOW}</p>
               <hr className='m-2' />
             </Col>
           </Row>
           <Row>
             <Col md={{ span: 4, order: 1 }} xs={{ span: 6, order: 1 }} className='mb-3'>
-              <h6>Szczepienia ogółem:</h6>
+              <h6>{t('allVaxinations')}</h6>
               <h4 className='m-0'>{insertThinSpace(data.SZCZEPIENIA_SUMA.toString())}</h4>
             </Col>
             <Col md={{ span: 4, order: 2 }} xs={{ span: 12, order: 3 }} className='mb-3'>
-              <h6>Drugie dawki ogółem:</h6>
+              <h6>{t('allSecondDoses')}</h6>
               <h4 className='m-0'>{insertThinSpace(data.DAWKA_2_SUMA.toString())}</h4>
             </Col>
             <Col md={{ span: 4, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
-              <h6>Szczepienia w ciągu ostatniej doby:</h6>
+              <h6>{t('lastDayVaccinations')}</h6>
               <h4 className='m-0'>{insertThinSpace(data.SZCZEPIENIA_DZIENNIE.toString())}</h4>
             </Col>
           </Row>
           <Row>
             <Col>
               <hr className='m-2' />
-              <h5 className='m-0'>Poziom zaszczepienia populacji Polski</h5>
+              <h5 className='m-0'>{t('levelOfVaxxinationInPoland')}</h5>
             </Col>
           </Row>
           <Row>
@@ -66,10 +68,10 @@ function Vaccines() {
           </Row>
           <Row>
             <Col>
-              <small><span className='color-green'>Kolor zielony</span> - część populacji zaszczepiona pierwszą oraz drugą dawką (tej wartości dotyczy procent)</small>
+              <small><span className='color-green'>{t('greenColour')}</span> - {t('greenColourExplanation')}</small>
             </Col>
             <Col>
-              <small><span className='color-yellow'>Kolor żółty</span> - część populacji, która otrzymała tylko pierwszą dawkę</small>
+              <small><span className='color-yellow'>{t('yellowColour')}</span> - {t('yellowColourExplanation')}</small>
             </Col>
           </Row>
           <Row>

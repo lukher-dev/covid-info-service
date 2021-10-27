@@ -4,11 +4,13 @@ import dayjs from 'dayjs'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import historicData from '../../data/historicData.json'
+import { useTranslation } from 'react-i18next'
 
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 dayjs.extend(customParseFormat)
 
 function Charts() {
+  const { t } = useTranslation()
   const [shownLimit, setShownLimit] = useState(null)
   const toDayJs = (x) => dayjs(x.DATA_SHOW, 'DD.MM.YYYY HH:mm')
   const today = dayjs()
@@ -47,7 +49,7 @@ function Charts() {
     yAxis: [
       {
         title: {
-          text: 'Liczba zakażeń',
+          text: t('chartLabelNewCases'),
         },
       },
     ],
@@ -59,11 +61,11 @@ function Charts() {
     },
     series: [
       {
-        name: 'Liczba nowych zakażeń',
+        name: t('chartLabelNewCases'),
         data: shownData.map((day) => [toDayJs(day).valueOf(), day.ZAKAZENIA_DZIENNE]),
       },
       {
-        name: 'Średnia liczba zakażeń z 7 dni',
+        name: t('chartLabelRollingCases'),
         data: shownData.map((day) => [toDayJs(day).valueOf(), rollingAverage[day.DATA_SHOW]]),
       },
     ],
@@ -72,22 +74,22 @@ function Charts() {
   return (
     <Jumbotron className='p-0 m-2'>
       <div className='text-center'>
-        <h2>Wykres nowych zakażeń</h2>
+        <h2>{t('chartTitle')}</h2>
       </div>
       <Container className='text-center p-4'>
         <Row>
           <Col>
             <div className='text-center'>
-              <h7>Zakres pokazywanych danych</h7>
+              <h6>{t('dataRange')}</h6>
               <div className='timeline-controls'>
                 <Container>
                   <Row>
                     {[
-                      [null, 'Wszystkie dane'],
-                      [365, 'Ostatni rok'],
-                      [93, 'Ostatni kwartał'],
-                      [31, 'Ostatni miesciąc'],
-                      [7, 'Ostatni tydzień'],
+                      [null, t('allData')],
+                      [365, t('lastYear')],
+                      [93, t('lastThreeMonths')],
+                      [31, t('lastMonth')],
+                      [7, t('lastWeek')],
                     ].map(([value, label]) => (
                       <Col lg={{ span: 2 }} md={{ span: 4 }} xs={{ span: 6 }} key={value}>
                         <button
