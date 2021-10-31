@@ -37,5 +37,6 @@
   "lastMonth": "Last month",
   "lastWeek": "Last week",
   "chartLabelNewCases": "New cases count",
-  "chartLabelRollingCases": "Rolling average of last 7 days"
+  "chartLabelRollingCases": "Rolling average of last 7 days",
+  "outdatedValue": "Last updated yesterday"
 }

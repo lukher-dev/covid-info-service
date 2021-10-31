@@ -1,12 +1,14 @@
 import React from 'react'
 import statsData from '../data/statsData.json'
+import { useTranslation } from 'react-i18next'
 
 export function newOrOld(field) {
   return statsData['today'][field] || statsData['yesterday'][field]
 }
 
 export function updateWarning(field) {
-  return !statsData['today'][field] ? <span className='adnotation text-danger m-0'>(Wczorajsza wartość)</span> : <></>
+  const { t } = useTranslation()
+  return !statsData['today'][field] ? <span className='adnotation text-danger m-0'>({t('outdatedValue')})</span> : <></>
 }
 
 export function percentageDifference(field) {

@@ -37,5 +37,6 @@
   "lastMonth": "Ostatni miesiąc",
   "lastWeek": "Ostatni tydzień",
   "chartLabelNewCases": "Liczba nowych zakażeń",
-  "chartLabelRollingCases": "Średnia liczba zakażeń z 7 dni"
+  "chartLabelRollingCases": "Średnia liczba zakażeń z 7 dni",
+  "outdatedValue": "Wczorajsza wartość"
 }
