@@ -4,14 +4,14 @@ import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import { insertThinSpace } from '../helpers'
 import { useTranslation } from 'react-i18next'
 
-const adultPopulation = 32_495_000
+const population = 37_672_367
 
 function Vaccines() {
   const { t } = useTranslation()
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    axios.get('https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/global_szczepienia_actual_widok/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=1&resultType=standard&cacheHint=true', {
+    axios.get('https://services-eu1.arcgis.com/zk7YlClTgerl62BY/arcgis/rest/services/widok_global_szczepienia_actual/FeatureServer/0/query?f=json&cacheHint=true&resultOffset=0&resultRecordCount=1&where=1%3D1&outFields=*&resultType=standard&returnGeometry=false&spatialRel=esriSpatialRelIntersects', {
     }).then(response => {
       if(response.data && response.data.features && response.data.features[0].attributes)
         setData(response.data.features[0].attributes)
@@ -20,8 +20,8 @@ function Vaccines() {
 
   if(!data)
     return null
-  const percentageToday = Math.ceil((data.DAWKA_2_SUMA / adultPopulation) * 10000) / 100
-  const percentageFuture = Math.ceil(((data.SZCZEPIENIA_SUMA - data.DAWKA_2_SUMA) / adultPopulation) * 10000) / 100
+  const vaccinated = Math.ceil((data.zaszczepieni_finalnie / population) * 10000) / 100
+  const boosterDose = Math.ceil((data.dawka_przypominajaca / population) * 10000) / 100
   return (
     <div>
       <Jumbotron className='p-0 m-2' >
@@ -41,8 +41,8 @@ function Vaccines() {
               <h4 className='m-0'>{insertThinSpace(data.SZCZEPIENIA_SUMA.toString())}</h4>
             </Col>
             <Col md={{ span: 4, order: 2 }} xs={{ span: 12, order: 3 }} className='mb-3'>
-              <h6>{t('allSecondDoses')}</h6>
-              <h4 className='m-0'>{insertThinSpace(data.DAWKA_2_SUMA.toString())}</h4>
+              <h6>{t('vaccinated')}</h6>
+              <h4 className='m-0'>{insertThinSpace(data.zaszczepieni_finalnie.toString())}</h4>
             </Col>
             <Col md={{ span: 4, order: 3 }} xs={{ span: 6, order: 2 }} className='mb-3'>
               <h6>{t('lastDayVaccinations')}</h6>
@@ -58,20 +58,20 @@ function Vaccines() {
           <Row>
             <Col>
               <ProgressBar className='bar mt-2'>
-                <ProgressBar className='color-green' animated now={data.DAWKA_2_SUMA/adultPopulation * 100} />
-                <ProgressBar className='color-yellow' now={(data.SZCZEPIENIA_SUMA-(2*data.DAWKA_2_SUMA))/adultPopulation * 100} />
+                <ProgressBar className='color-purple' animated now={data.dawka_przypominajaca/population * 100} />
+                <ProgressBar className='color-green' now={(data.zaszczepieni_finalnie-(2*data.dawka_przypominajaca))/population * 100} />
               </ProgressBar>
               <ProgressBar className='light-bar black-font'>
-                <ProgressBar className='color-light percentage-label' now={100} label={`${percentageToday}% (za 21 dni przewidujemy około ${percentageFuture}%)`} />
+                <ProgressBar className='color-light percentage-label' now={100} label={t('boosterDose', { vaccinated: vaccinated, boosterDose: boosterDose })} />
               </ProgressBar>
             </Col>
           </Row>
           <Row>
             <Col>
-              <small><span className='color-green'>{t('greenColour')}</span> - {t('greenColourExplanation')}</small>
+              <small><span className='color-green text-white p-1'>{t('greenColour')}</span> - {t('greenColourExplanation')}</small>
             </Col>
             <Col>
-              <small><span className='color-yellow'>{t('yellowColour')}</span> - {t('yellowColourExplanation')}</small>
+              <small><span className='color-purple text-white p-1'>{t('purpleColour')}</span> - {t('purpleColourExplanation')}</small>
             </Col>
           </Row>
           <Row>
