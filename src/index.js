@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import Root from './components/Root'
 import reportWebVitals from './reportWebVitals'
-
+import './i18n'
 ReactGA.initialize('G-5J0BQEKJX3')
 
 ReactDOM.render(

@@ -3,19 +3,21 @@ import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import { doomCounterValue } from '../helpers'
 import { FaTwitterSquare } from 'react-icons/fa'
 import { updateWarning, newOrOld, percentageDifference } from '../helpers'
+import { useTranslation } from 'react-i18next'
 
 function DoomBar() {
+  const { t } = useTranslation()
   const [steps, stepsProcessed, max, doomCounterValues, doomCounterlabels] = doomCounterValue()
   return (
     <Jumbotron className='p-0 m-2' >
       <div className='text-center'>
-        <h2>Etapy zasad bezpieczeństwa</h2>
+        <h2>{t('colourfulRealmsRules')}</h2>
       </div>
       <Container className='text-center pt-2' >
         <Row>
           <Col>
             <p className='font-weight-light'>
-                            Średnia liczba nowych zakażeń przez ostatnie 7 dni:
+              {t('averageNewCasesOverSevenDays')}
               <b> {Math.round(newOrOld('the_average'))} {percentageDifference('the_average')}
                 {updateWarning('the_average')}
               </b>
@@ -47,25 +49,25 @@ function DoomBar() {
               <ProgressBar className='color-light-black' now={stepsProcessed[4] / max} label={doomCounterlabels[4]} />
             </ProgressBar>
             <Row className='m-0'>
-              <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[0] / max).toString() + '%', 'border-left-style': 'dashed' }}>
-                <small>Regionalny podział na strefy</small>
+              <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[0] / max).toString() + '%', 'borderLeftStyle': 'dashed' }}>
+                <small>{t('greenRealmRules')}</small>
               </div>
               <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[1] / max).toString() + '%' }}>
-                <small>Cała polska strefą żółtą, wybrane powiaty strefą czerwoną</small>
+                <small>{t('yellowRealmRules')}</small>
               </div>
               <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[2] / max).toString() + '%' }}>
-                <small>Cała polska strefą czerwoną</small>
+                <small>{t('redRealmRules')}</small>
               </div>
               <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[3] / max).toString() + '%' }}>
-                <small>Bezpiecznik/Faza odpowiedzialności</small>
+                <small>{t('violetRealmRules')}</small>
               </div>
               <div className='bar-label d-md-inline d-lg-inline d-none' style={{ width: (stepsProcessed[4] / max).toString() + '%' }}>
-                <small>Kwarantanna narodowa</small>
+                <small>{t('blackRealmRules')}</small>
               </div>
             </Row>
             <hr className='m-2' />
-            <small>Więcej informacji o etapach zasad bezpieczeństwa:</small>
-            <p><a href='https://twitter.com/PremierRP/status/1330078274987450369/photo/1'>{<FaTwitterSquare size={20} />}Kancelaria Premiera</a></p>
+            <small>{t('moreInfoAboutRealms')}</small>
+            <p><a href='https://twitter.com/PremierRP/status/1330078274987450369/photo/1'>{<FaTwitterSquare size={20} />}{t('PMChancellery')}</a></p>
           </Col>
         </Row>
       </Container>
