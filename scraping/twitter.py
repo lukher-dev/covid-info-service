@@ -172,7 +172,7 @@ if __name__ == '__main__':
                 except:
                         pass
                 try:
-                        data[day]['percent_positive'] = '{0:.2f} %'.format(float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100).replace('.', ',')
+                        data[day]['percent_positive'] = '{0:.2f}%'.format(float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100).replace('.', ',')
                 except:
                         pass
                 try:
