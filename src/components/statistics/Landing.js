@@ -60,7 +60,7 @@ function Landing() {
               <Row>
                 <Col>
                   <h4 className='m-0'>{newOrOld('tests_done_today')}</h4>
-                  <p className='m-0 p-0'><small className='text-muted font-weight-normal'>{t('numberOfTests', {number: newOrOld('percent_positive')})}</small></p>
+                  <p className='m-0 p-0'><small className='text-muted font-weight-normal'>{t('positiveTestsPercentage', {number: newOrOld('percent_positive')})}</small></p>
                   {updateWarning('tests_done_today')}
                 </Col>
               </Row>
