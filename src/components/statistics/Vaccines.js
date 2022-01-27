@@ -59,7 +59,7 @@ function Vaccines() {
             <Col>
               <ProgressBar className='bar mt-2'>
                 <ProgressBar className='color-purple' animated now={data.dawka_przypominajaca/population * 100} />
-                <ProgressBar className='color-green' now={(data.zaszczepieni_finalnie-(2*data.dawka_przypominajaca))/population * 100} />
+                <ProgressBar className='color-green' now={(data.zaszczepieni_finalnie-(1*data.dawka_przypominajaca))/population * 100} />
               </ProgressBar>
               <ProgressBar className='light-bar black-font'>
                 <ProgressBar className='color-light percentage-label' now={100} label={t('boosterDose', { vaccinated: vaccinated, boosterDose: boosterDose })} />
