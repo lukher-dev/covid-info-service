@@ -92,11 +92,19 @@ def extract_info_from_tweet(tweet):
                         curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "")
 
                 match = re.search(
-                        'Mamy ([ \\d]+) now', text)
+                        'Mamy ([ \\d]+) \(w tym ([ \\d]+) ponownych', text)
                 if match:
                         if not curent_data['new_cases_today']:
                                 curent_data['new_cases_today'] = match.groups()[0].replace(" ", "")
+                                curent_data['repeated_cases_today'] = match.groups()[1].replace(" ", "")
                         cases_history.append(match.groups()[0].replace(" ", ""))
+                else:
+                        match = re.search(
+                        'Mamy ([ \\d]+) now', text)
+                        if match:
+                                if not curent_data['new_cases_today']:
+                                        curent_data['new_cases_today'] = match.groups()[0].replace(" ", "")
+                                cases_history.append(match.groups()[0].replace(" ", ""))   
 
                 match = re.search(
                         '.iczba zaka.onych koronawirusem.([ \\d]+).([ \\d]+).wszystkie', text)
