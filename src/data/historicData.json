@@ -11201,5 +11201,27 @@
     "LICZBA_ZGONOW": 106607,
     "WSZYSCY_OZDROWIENCY": 4330328,
     "LICZBA_ZAKAZEN": 5185757
+  },
+  {
+    "OBJECTID": 1,
+    "Data": 1644312594409,
+    "ZAKAZENIA_DZIENNE": 31986,
+    "ZGONY_DZIENNE": 286,
+    "ZGONY_COVID": 83,
+    "ZGONY_WSPOLISTNIEJACE": 203,
+    "KWARANTANNA": 550851,
+    "TESTY": 138531,
+    "TESTY_POZYTYWNE": 38504,
+    "ZLECENIA_POZ": 58112,
+    "LICZBA_OZDROWIENCOW": 52526,
+    "AKTUALNE_ZAKAZENIA": 736313,
+    "DATA_SHOW": "08.02.2022 10:29",
+    "LICZBA_ZGONOW": 106894,
+    "WSZYSCY_OZDROWIENCY": 4373899,
+    "LICZBA_ZAKAZEN": 5217106,
+    "liczba_ponownych_zakazen": 6388,
+    "liczba_wszystkich_zakazen": 5223494,
+    "dzienne_ponowne_zakazenia": 3974,
+    "dzienne_wszystkie_zakazenia": 35960
   }
 ]
