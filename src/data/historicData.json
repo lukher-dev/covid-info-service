@@ -11641,5 +11641,27 @@
     "liczba_wszystkich_zakazen": 5660493,
     "dzienne_ponowne_zakazenia": 916,
     "dzienne_wszystkie_zakazenia": 8902
+  },
+  {
+    "OBJECTID": 1,
+    "Data": 1646040592478,
+    "ZAKAZENIA_DZIENNE": 5894,
+    "ZGONY_DZIENNE": 1,
+    "ZGONY_COVID": 0,
+    "ZGONY_WSPOLISTNIEJACE": 1,
+    "KWARANTANNA": 91748,
+    "TESTY": 42701,
+    "TESTY_POZYTYWNE": 7305,
+    "ZLECENIA_POZ": 462,
+    "LICZBA_OZDROWIENCOW": 19888,
+    "AKTUALNE_ZAKAZENIA": 445854,
+    "DATA_SHOW": "28.02.2022 10:29",
+    "LICZBA_ZGONOW": 111317,
+    "WSZYSCY_OZDROWIENCY": 5057169,
+    "LICZBA_ZAKAZEN": 5614340,
+    "liczba_ponownych_zakazen": 52714,
+    "liczba_wszystkich_zakazen": 5667054,
+    "dzienne_ponowne_zakazenia": 670,
+    "dzienne_wszystkie_zakazenia": 6564
   }
 ]
