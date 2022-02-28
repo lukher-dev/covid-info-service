@@ -86,10 +86,10 @@ def extract_info_from_tweet(tweet):
                 text = tweet.full_text
 
                 match = re.search(
-                        'COVID.?19 zmar.. (\\d+) os.+ (\\d+) os', text)
+                        '(?:(\\d+) os.+ zmar.*|adna.os.+) (\\d+) os.+ zma', text)
                 if match and (not curent_data['dead_covid_today'] and not curent_data['dead_intercurrent_today']):
-                        curent_data['dead_covid_today'] = match.groups()[0].replace(" ", "")
-                        curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "")
+                        curent_data['dead_covid_today'] = match.groups()[0].replace(" ", "") or '0'
+                        curent_data['dead_intercurrent_today'] = match.groups()[1].replace(" ", "") or '0'
 
                 match = re.search(
                         'Mamy ([ \\d]+) now', text)
@@ -166,19 +166,19 @@ if __name__ == '__main__':
                 try:
                         data[day]['dead_all_today'] = str(int(data[day]['dead_intercurrent_today']) + int(data[day]['dead_covid_today']))
                 except:
-                        pass
+                        data[day]['dead_all_today'] = 0
                 try:
                         data[day]['active_cases'] = str(int(data[day]['cases_global']) - int(data[day]['healed_count']) - int(data[day]['dead_global']))
                 except:
-                        pass
+                        data[day]['active_cases'] = 0
                 try:
                         data[day]['percent_positive'] = '{0:.2f}%'.format(float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100).replace('.', ',')
                 except:
-                        pass
+                        data[day]['percent_positive'] = 0
                 try:
                         data[day]['percent_positive_value'] = float(data[day]['new_cases_today']) / parse_test_number(data[day]['tests_done_today']) * 100
                 except:
-                        pass
+                        data[day]['percent_positive_value'] = 0
 
         try:
                 data['casesHistory'] = data['casesHistory'][:history_len]
