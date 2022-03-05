@@ -11751,5 +11751,27 @@
     "liczba_wszystkich_zakazen": 5721316,
     "dzienne_ponowne_zakazenia": 1390,
     "dzienne_wszystkie_zakazenia": 12483
+  },
+  {
+    "OBJECTID": 1,
+    "Data": 1646472594404,
+    "ZAKAZENIA_DZIENNE": 11423,
+    "ZGONY_DZIENNE": 199,
+    "ZGONY_COVID": 54,
+    "ZGONY_WSPOLISTNIEJACE": 145,
+    "KWARANTANNA": 75180,
+    "TESTY": 74365,
+    "TESTY_POZYTYWNE": 13745,
+    "ZLECENIA_POZ": 13818,
+    "LICZBA_OZDROWIENCOW": 9870,
+    "AKTUALNE_ZAKAZENIA": 445519,
+    "DATA_SHOW": "05.03.2022 10:29",
+    "LICZBA_ZGONOW": 112535,
+    "WSZYSCY_OZDROWIENCY": 5115918,
+    "LICZBA_ZAKAZEN": 5673972,
+    "liczba_ponownych_zakazen": 60069,
+    "liczba_wszystkich_zakazen": 5734041,
+    "dzienne_ponowne_zakazenia": 1314,
+    "dzienne_wszystkie_zakazenia": 12737
   }
 ]
