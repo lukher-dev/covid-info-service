@@ -12697,5 +12697,27 @@
     "liczba_wszystkich_zakazen": 5984940,
     "dzienne_ponowne_zakazenia": 100,
     "dzienne_wszystkie_zakazenia": 1078
+  },
+  {
+    "OBJECTID": 1,
+    "Data": 1650184186484,
+    "ZAKAZENIA_DZIENNE": 290,
+    "ZGONY_DZIENNE": 0,
+    "ZGONY_COVID": 0,
+    "ZGONY_WSPOLISTNIEJACE": 0,
+    "KWARANTANNA": 1,
+    "TESTY": 5675,
+    "TESTY_POZYTYWNE": 376,
+    "ZLECENIA_POZ": 16,
+    "LICZBA_OZDROWIENCOW": 35,
+    "AKTUALNE_ZAKAZENIA": 448812,
+    "DATA_SHOW": "17.04.2022 10:29",
+    "LICZBA_ZGONOW": 115838,
+    "WSZYSCY_OZDROWIENCY": 5334092,
+    "LICZBA_ZAKAZEN": 5898742,
+    "liczba_ponownych_zakazen": 86509,
+    "liczba_wszystkich_zakazen": 5985251,
+    "dzienne_ponowne_zakazenia": 22,
+    "dzienne_wszystkie_zakazenia": 312
   }
 ]
