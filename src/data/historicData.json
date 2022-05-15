@@ -13313,5 +13313,27 @@
     "liczba_wszystkich_zakazen": 6003297,
     "dzienne_ponowne_zakazenia": 44,
     "dzienne_wszystkie_zakazenia": 434
+  },
+  {
+    "OBJECTID": 1,
+    "Data": 1652603386994,
+    "ZAKAZENIA_DZIENNE": 129,
+    "ZGONY_DZIENNE": 0,
+    "ZGONY_COVID": 0,
+    "ZGONY_WSPOLISTNIEJACE": 0,
+    "KWARANTANNA": 0,
+    "TESTY": 5941,
+    "TESTY_POZYTYWNE": 170,
+    "ZLECENIA_POZ": 36,
+    "LICZBA_OZDROWIENCOW": 12,
+    "AKTUALNE_ZAKAZENIA": 463950,
+    "DATA_SHOW": "15.05.2022 10:29",
+    "LICZBA_ZGONOW": 116207,
+    "WSZYSCY_OZDROWIENCY": 5335112,
+    "LICZBA_ZAKAZEN": 5915269,
+    "liczba_ponownych_zakazen": 88167,
+    "liczba_wszystkich_zakazen": 6003436,
+    "dzienne_ponowne_zakazenia": 10,
+    "dzienne_wszystkie_zakazenia": 139
   }
 ]
