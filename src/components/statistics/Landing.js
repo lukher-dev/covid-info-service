@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import ReactGA from 'react-ga'
-import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
-import lastUpdateDate from '../../data/lastUpdateDate.json'
-import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from '../helpers'
-import { FaTwitterSquare } from 'react-icons/fa'
-import DoomBar from './DoomBar'
+// import { Jumbotron, Container, Row, Col, ProgressBar } from 'react-bootstrap'
+// import lastUpdateDate from '../../data/lastUpdateDate.json'
+// import { newOrOld, percentageDifference, updateWarning, insertThinSpace } from '../helpers'
+// import { FaTwitterSquare } from 'react-icons/fa'
+// import DoomBar from './DoomBar'
 import Vaccines from './Vaccines'
 import Charts from './Charts'
 import { useTranslation } from 'react-i18next'
+import { Jumbotron } from 'react-bootstrap'
 
 function Landing() {
   const { t } = useTranslation()
@@ -17,8 +18,13 @@ function Landing() {
 
   return (
     <div>
-      <Vaccines/>
       <Jumbotron className='p-0 m-2' >
+        <div className='text-center'>
+          <h4>{t('serviceNotice')}</h4>
+        </div>
+      </Jumbotron>
+      <Vaccines />
+      {/* <Jumbotron className='p-0 m-2' >
         <div className='text-center'>
           <h2>{t('cases')}</h2>
         </div>
@@ -101,7 +107,7 @@ function Landing() {
           </Row>
         </Container>
       </Jumbotron>
-      <DoomBar />
+      <DoomBar /> */}
       {/* <Jumbotron className='p-0 m-2' >
                 <Container>
                     <Row className='text-center'>
@@ -116,7 +122,7 @@ function Landing() {
                     </Row>
                 </Container>
             </Jumbotron> */}
-      <Charts/>
+      <Charts />
     </div >
   )
 }

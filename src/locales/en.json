@@ -38,5 +38,6 @@
   "lastWeek": "Last week",
   "chartLabelNewCases": "New cases count",
   "chartLabelRollingCases": "Rolling average of last 7 days",
-  "outdatedValue": "Last updated yesterday"
+  "outdatedValue": "Last updated yesterday",
+  "serviceNotice": "Due to the easing of the state of the pandemic in Poland, the info-covid.pl service is no longer maintained"
 }
