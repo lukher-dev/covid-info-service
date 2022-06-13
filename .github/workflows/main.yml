@@ -3,10 +3,10 @@ name: Data scraping and deployment
 on:
   push:
     branches: [master]
-  schedule:
-    - cron: "32 9 * * *"
-    - cron: "47 9 * * *"
-    - cron: "00 10 * * *" # A deployment at 11:00 in case MZ is late with data
+  # schedule:
+    # - cron: "32 9 * * *"
+    # - cron: "47 9 * * *"
+    # - cron: "00 10 * * *" # A deployment at 11:00 in case MZ is late with data
 
 jobs:
   build:
@@ -29,35 +29,35 @@ jobs:
             ${{ runner.os }}-node-
 
       # Data scraping
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+      # - name: Set up Python 3.8
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: 3.8
 
-      - name: Data scraping
-        run: |
-          cd ./scraping
-          python -m pip install --upgrade pip
-          pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          python add_new_data.py
-          python twitter.py ${{secrets.CONSUMER_KEY}} ${{secrets.CONSUMER_SECRET}} ${{secrets.ACCESS_KEY}} ${{secrets.ACCESS_SECRET}} > ../src/data/statsData.json
-          cat ../src/data/statsData.json
+      # - name: Data scraping
+      #   run: |
+      #     cd ./scraping
+      #     python -m pip install --upgrade pip
+      #     pip install flake8 pytest
+      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      #     python add_new_data.py
+      #     python twitter.py ${{secrets.CONSUMER_KEY}} ${{secrets.CONSUMER_SECRET}} ${{secrets.ACCESS_KEY}} ${{secrets.ACCESS_SECRET}} > ../src/data/statsData.json
+      #     cat ../src/data/statsData.json
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7.2.1
-        with:
-          author_name: Scaper
-          message: 'Data scraped!'
-          add: './src/data/historicData.json'
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v7.2.1
+      #   with:
+      #     author_name: Scaper
+      #     message: 'Data scraped!'
+      #     add: './src/data/historicData.json'
 
-      - name: Update lastUpdateDate.json
-        run: |
-          sudo apt-get install jq
-          cat ./src/data/lastUpdateDate.json
-          jq '.lastCases = $today' --arg today $(eval date +'%d.%m.%Y') src/data/lastUpdateDate.json > temp.json
-          cat temp.json > src/data/lastUpdateDate.json
-          rm temp.json
+      # - name: Update lastUpdateDate.json
+      #   run: |
+      #     sudo apt-get install jq
+      #     cat ./src/data/lastUpdateDate.json
+      #     jq '.lastCases = $today' --arg today $(eval date +'%d.%m.%Y') src/data/lastUpdateDate.json > temp.json
+      #     cat temp.json > src/data/lastUpdateDate.json
+      #     rm temp.json
 
       - run: npm ci
       - run: npm run build
